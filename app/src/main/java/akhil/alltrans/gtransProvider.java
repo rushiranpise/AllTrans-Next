@@ -66,6 +66,13 @@ public class gtransProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         utils.debugLog("Got URI as - " + uri.toString());
+        /* Only apps enabled in AllTrans may use the translation backend. */
+        if (!utils.isTrustedCaller(this.getContext(), null,
+                uri.getQueryParameter(utils.CALLER_PARAM))) {
+            utils.debugLog("gtransProvider: rejected caller");
+            String original = uri.getQueryParameter("text");
+            return buildCursorWithTranslation(original == null ? "" : original);
+        }
         String fromLanguage = uri.getQueryParameter("from");
         String toLanguage = uri.getQueryParameter("to");
         String tobeTrans = uri.getQueryParameter("text");

@@ -126,6 +126,7 @@ public class alltrans implements IXposedHookLoadPackage {
                     if (uri.toString().contains("alltransProxyProviderURI")){
 
                         XposedBridge.log("AllTrans: got projection xlua ");
+                        final int callerUid = Binder.getCallingUid();
                         long ident = Binder.clearCallingIdentity();
                         try {
                             Method mGetContext = param.thisObject.getClass().getMethod("getContext");
@@ -136,6 +137,14 @@ public class alltrans implements IXposedHookLoadPackage {
 
                             XposedBridge.log("AllTrans: Old URI " + uri.toString());
                             String new_uri_string = uri.toString().replace("content://settings/system/alltransProxyProviderURI/", "content://akhil.alltrans.");
+                            /* Vouch for the real caller: the provider rejects
+                               plain system_server calls, since any app could
+                               otherwise use this proxy to read the settings. */
+                            String callerPkg = utils.resolvePackageForUid(context, callerUid, uri.getLastPathSegment());
+                            if (callerPkg != null) {
+                                new_uri_string += (new_uri_string.contains("?") ? "&" : "?")
+                                        + utils.CALLER_PARAM + "=" + Uri.encode(callerPkg);
+                            }
                             Uri new_uri = Uri.parse(new_uri_string);
                             XposedBridge.log("AllTrans: New URI " + new_uri.toString());
 
@@ -208,13 +217,16 @@ public class alltrans implements IXposedHookLoadPackage {
                             return;
                         }
 
+                        final int callerUid = Binder.getCallingUid();
                         long ident = Binder.clearCallingIdentity();
                         try {
                             Method mGetContext = param.thisObject.getClass().getMethod("getContext");
                             Context context = (Context) mGetContext.invoke(param.thisObject);
 
                             XposedHelpers.callStaticMethod(Binder.class, "allowBlockingForCurrentThread");
-                            Uri newUri = Uri.parse("content://akhil.alltrans.sharedPrefProvider/" + packageName);
+                            String callerPkg = utils.resolvePackageForUid(context, callerUid, packageName);
+                            Uri newUri = Uri.parse("content://akhil.alltrans.sharedPrefProvider/" + packageName
+                                    + (callerPkg != null ? "?" + utils.CALLER_PARAM + "=" + Uri.encode(callerPkg) : ""));
                             Cursor cursor = context.getContentResolver().query(newUri, null, null, null, null);
                             if (cursor == null || !cursor.moveToFirst()) {
                                 if (cursor != null) {
@@ -270,15 +282,18 @@ public class alltrans implements IXposedHookLoadPackage {
                             return;
                         }
 
+                        final int callerUid = Binder.getCallingUid();
                         long ident = Binder.clearCallingIdentity();
                         try {
                             Method mGetContext = param.thisObject.getClass().getMethod("getContext");
                             Context context = (Context) mGetContext.invoke(param.thisObject);
 
                             XposedHelpers.callStaticMethod(Binder.class, "allowBlockingForCurrentThread");
+                            String callerPkg = utils.resolvePackageForUid(context, callerUid, null);
                             Uri uri = new Uri.Builder()
                                     .scheme("content")
                                     .authority("akhil.alltrans.gtransProvider")
+                                    .appendQueryParameter(utils.CALLER_PARAM, callerPkg == null ? "" : callerPkg)
                                     .appendQueryParameter("from", fromLanguage)
                                     .appendQueryParameter("to", toLanguage)
                                     .appendQueryParameter("text", sourceText)

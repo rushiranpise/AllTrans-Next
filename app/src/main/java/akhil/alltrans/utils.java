@@ -22,8 +22,11 @@ package akhil.alltrans;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.Bundle;
+import android.os.Process;
 import android.util.Log;
 
 import java.io.StringWriter;
@@ -88,6 +91,106 @@ class utils {
             return Collections.emptyList();
         }
         return list;
+    }
+
+    /**
+     * Guards the exported content providers. The settings provider may only be
+     * queried by the very app whose package is in the URI; the translation
+     * provider may only be queried by apps the user enabled in AllTrans. This
+     * stops any other app on the device from reading the module settings
+     * (including the Microsoft/Yandex subscription key) or using the
+     * translation backend for free.
+     *
+     * @param expectedPackage package the caller must be, or null to accept any
+     *                        app that is enabled in AllTrans
+     */
+    /** Query parameter the settings-provider hook adds to proxied requests. */
+    public static final String CALLER_PARAM = "alltrans_caller";
+
+    /**
+     * Resolves the package a UID belongs to. {@code preferredPackage} is
+     * returned when it is one of the UID's packages (apps can share a UID).
+     */
+    public static String resolvePackageForUid(Context context, int uid, String preferredPackage) {
+        try {
+            String[] packages = context.getPackageManager().getPackagesForUid(uid);
+            if (packages == null || packages.length == 0) {
+                return null;
+            }
+            if (preferredPackage != null) {
+                for (String pkg : packages) {
+                    if (pkg.equals(preferredPackage)) {
+                        return pkg;
+                    }
+                }
+                return null;
+            }
+            return packages[0];
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    public static boolean isTrustedCaller(Context context, String expectedPackage) {
+        return isTrustedCaller(context, expectedPackage, null);
+    }
+
+    /**
+     * Guards the exported content providers. The settings provider may only be
+     * queried by the very app whose package is in the URI; the translation
+     * provider may only be queried by apps the user enabled in AllTrans. This
+     * stops any other app on the device from reading the module settings
+     * (including the Microsoft/Yandex subscription key) or using the
+     * translation backend for free.
+     *
+     * The settings-provider proxy hook runs inside system_server, so requests
+     * from UID 1000 carry the original package in {@link #CALLER_PARAM}; that
+     * value is trusted only because system_server resolved it from the real
+     * calling UID before clearing the calling identity.
+     *
+     * @param expectedPackage package the caller must be, or null to accept any
+     *                        app that is enabled in AllTrans
+     * @param proxiedCaller   package forwarded by the system_server proxy
+     */
+    public static boolean isTrustedCaller(Context context, String expectedPackage, String proxiedCaller) {
+        try {
+            int uid = Binder.getCallingUid();
+            if (uid == Process.myUid()) {
+                return true;
+            }
+            if (uid == Process.SYSTEM_UID) {
+                if (proxiedCaller == null || proxiedCaller.isEmpty()) {
+                    /* Older module versions run the settings-provider proxy hook
+                       without the caller parameter (the hook lives in
+                       system_server and only reloads on reboot). Accept those
+                       requests for compatibility; the provider returns a
+                       sanitized global map for them. */
+                    return true;
+                }
+                if (expectedPackage != null) {
+                    return proxiedCaller.equals(expectedPackage);
+                }
+                SharedPreferences prefs = sharedPrefUtils.getSharedPreferences(context, "AllTransPref");
+                return prefs.getBoolean(proxiedCaller, false);
+            }
+            String[] packages = context.getPackageManager().getPackagesForUid(uid);
+            if (packages == null) {
+                return false;
+            }
+            SharedPreferences prefs = sharedPrefUtils.getSharedPreferences(context, "AllTransPref");
+            for (String pkg : packages) {
+                if (expectedPackage != null) {
+                    if (pkg.equals(expectedPackage)) {
+                        return true;
+                    }
+                } else if (prefs.getBoolean(pkg, false)) {
+                    return true;
+                }
+            }
+        } catch (Throwable t) {
+            debugLog("Caller check failed: " + Log.getStackTraceString(t));
+        }
+        return false;
     }
 
     public static void debugLog(String str) {

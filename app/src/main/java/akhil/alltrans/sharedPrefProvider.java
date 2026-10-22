@@ -41,14 +41,38 @@ public class sharedPrefProvider extends ContentProvider {
     @Override
     public Cursor query(@NonNull Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         utils.debugLog("Got URI as - " + uri.toString());
-        String packageName = uri.toString().replaceFirst("content://akhil.alltrans.sharedPrefProvider/", "");
+        String packageName = uri.getLastPathSegment();
+        if (packageName == null) {
+            return null;
+        }
         String[] cols = {"sharedPreferences"};
         MatrixCursor cursor = new MatrixCursor(cols);
+
+        /* Only the app whose preferences are requested may read them, otherwise
+           any installed app could dump the module settings (including the
+           translation API key). */
+        if (!utils.isTrustedCaller(this.getContext(), packageName,
+                uri.getQueryParameter(utils.CALLER_PARAM))) {
+            utils.debugLog("sharedPrefProvider: rejected caller for " + packageName);
+            return null;
+        }
 
         //noinspection ConstantConditions
         SharedPreferences globalPref = sharedPrefUtils.getSharedPreferences(this.getContext(), "AllTransPref");
         MatrixCursor.RowBuilder builder = cursor.newRow();
-        String globalPrefGson = new Gson().toJson(globalPref.getAll());
+        /* Requests proxied by an OLD module version (system_server hook without
+           the caller parameter) get the global map without the translation API
+           key, so the proxy can never leak it. */
+        String globalPrefGson;
+        boolean sanitize = android.os.Binder.getCallingUid() == android.os.Process.SYSTEM_UID
+                && uri.getQueryParameter(utils.CALLER_PARAM) == null;
+        if (sanitize) {
+            java.util.Map<String, ?> map = new java.util.HashMap<>(globalPref.getAll());
+            map.remove("SubscriptionKey");
+            globalPrefGson = new Gson().toJson(map);
+        } else {
+            globalPrefGson = new Gson().toJson(globalPref.getAll());
+        }
         builder.add(globalPrefGson);
         utils.debugLog("Got globalpref as - " + globalPrefGson + " for package " + packageName);
         utils.debugLog("Got boolean as - " + globalPref.getBoolean(packageName, false) + " for package " + packageName);
