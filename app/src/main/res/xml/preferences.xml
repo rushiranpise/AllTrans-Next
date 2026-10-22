@@ -154,7 +154,7 @@
             android:title="@string/caching" />
         <SwitchPreference
             app:iconSpaceReserved="false"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="Anon"
             android:summaryOff="@string/analytics_summary_off"
             android:summaryOn="@string/analytics_summary_on"
