@@ -20,7 +20,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <SwitchPreference
+    <akhil.alltrans.MaterialSwitchPreference
         app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="LocalEnabled"
@@ -28,14 +28,14 @@
         android:summaryOff="@string/local_on_off_summary_off"
         android:summaryOn="@string/local_on_off_summary_on"
         android:title="@string/local_on_off" />
-    <SwitchPreference
+    <akhil.alltrans.MaterialSwitchPreference
         app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="OverRide"
         android:summaryOff="@string/overRide_global_summary_off"
         android:summaryOn="@string/overRide_global_summary_on"
         android:title="@string/overRide_global" />
-    <SwitchPreference
+    <akhil.alltrans.MaterialSwitchPreference
         app:iconSpaceReserved="false"
         android:defaultValue="false"
         android:key="ClearCache"
@@ -66,14 +66,14 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_cat_troubleshooting_info" app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="DrawText"
             android:summaryOff="@string/drawText_summary_off"
             android:summaryOn="@string/drawText_summary_on"
             android:title="@string/drawText"/>
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Scroll"
@@ -100,35 +100,35 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_cat_advanced_settings" app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetText"
             android:summaryOff="@string/setText_summary_off"
             android:summaryOn="@string/setText_summary_on"
             android:title="@string/setText" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetHint"
             android:summaryOff="@string/setHint_summary_off"
             android:summaryOn="@string/setHint_summary_on"
             android:title="@string/setHint" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="LoadURL"
             android:summaryOff="@string/webView_summary_off"
             android:summaryOn="@string/webView_summary_on"
             android:title="@string/webView" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Cache"
             android:summaryOff="@string/caching_summary_off"
             android:summaryOn="@string/caching_summary_on"
             android:title="@string/caching" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Notif"

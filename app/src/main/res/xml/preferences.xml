@@ -35,7 +35,7 @@
             android:title="@string/theme_title" />
     </PreferenceCategory>
 
-    <SwitchPreference
+    <akhil.alltrans.MaterialSwitchPreference
         app:iconSpaceReserved="false"
         android:defaultValue="true"
         android:key="Enabled"
@@ -83,14 +83,14 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_cat_troubleshooting_info" app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="DrawText"
             android:summaryOff="@string/drawText_summary_off"
             android:summaryOn="@string/drawText_summary_on"
             android:title="@string/drawText"/>
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Scroll"
@@ -117,49 +117,49 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/pref_cat_advanced_settings" app:iconSpaceReserved="false">
 
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetText"
             android:summaryOff="@string/setText_summary_off"
             android:summaryOn="@string/setText_summary_on"
             android:title="@string/setText" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetHint"
             android:summaryOff="@string/setHint_summary_off"
             android:summaryOn="@string/setHint_summary_on"
             android:title="@string/setHint" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="LoadURL"
             android:summaryOff="@string/webView_summary_off"
             android:summaryOn="@string/webView_summary_on"
             android:title="@string/webView" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Notif"
             android:summaryOff="@string/notif_summary_off"
             android:summaryOn="@string/notif_summary_on"
             android:title="@string/notif" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Cache"
             android:summaryOff="@string/caching_summary_off"
             android:summaryOn="@string/caching_summary_on"
             android:title="@string/caching" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Anon"
             android:summaryOff="@string/analytics_summary_off"
             android:summaryOn="@string/analytics_summary_on"
             android:title="@string/analytics" />
-        <SwitchPreference
+        <akhil.alltrans.MaterialSwitchPreference
             app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Debug"

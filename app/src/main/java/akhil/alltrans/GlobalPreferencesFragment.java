@@ -42,6 +42,8 @@ import java.util.TreeMap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -196,15 +198,12 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
                         .build();
         final Translator englishGermanTranslator = Translation.getClient(options);
 
-        AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
+        MaterialAlertDialogBuilder adb = new MaterialAlertDialogBuilder(getContext());
         adb.setMessage(R.string.ask_download);
         adb.setPositiveButton(R.string.download_now, new DialogInterface.OnClickListener() {
             public void onClick(final DialogInterface dialogInterface, int which) {
-                final ProgressDialog dialog = new ProgressDialog(getContext());
-                dialog.setMessage(getString(R.string.downloading));
-                dialog.setIndeterminate(true);
-                dialog.setCancelable(false);
-                dialog.show();
+                final AlertDialog dialog = MaterialPreferenceDialogs.showProgress(
+                        getContext(), getString(R.string.downloading));
 
                 englishGermanTranslator.downloadModelIfNeeded()
                         .addOnSuccessListener(
@@ -248,6 +247,7 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         sharedPrefUtils.setWorldReadableMode(preferenceManager);
         preferenceManager.setSharedPreferencesName("AllTransPref");
         addPreferencesFromResource(R.xml.preferences);
+        MaterialPreferenceDialogs.bindAll(getPreferenceScreen());
 
         /* Recreate the activity when the appearance changes so the new theme
            (and AMOLED surfaces) apply immediately. */

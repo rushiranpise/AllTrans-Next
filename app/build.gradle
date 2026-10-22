@@ -95,7 +95,6 @@ dependencies {
     implementation 'com.google.mlkit:language-id:17.0.6'
     implementation 'androidx.multidex:multidex:2.0.1'
 
-    implementation 'com.codemybrainsout.rating:ratingdialog:1.0.8'
 
 
 }

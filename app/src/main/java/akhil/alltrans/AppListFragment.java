@@ -19,7 +19,6 @@
 
 package akhil.alltrans;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -49,6 +48,7 @@ import java.util.ListIterator;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -248,15 +248,11 @@ public class AppListFragment extends Fragment {
     }
 
     private class PrepareAdapter extends AsyncTask<Void, Void, Void> {
-        ProgressDialog dialog;
+        AlertDialog dialog;
 
         @Override
         protected void onPreExecute() {
-            dialog = new ProgressDialog(context);
-            dialog.setMessage(getString(R.string.loading));
-            dialog.setIndeterminate(true);
-            dialog.setCancelable(false);
-            dialog.show();
+            dialog = MaterialPreferenceDialogs.showProgress(context, getString(R.string.loading));
         }
 
         @Override

@@ -22,9 +22,10 @@ package akhil.alltrans;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RatingBar;
 
-import com.codemybrainsout.ratingdialog.RatingDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
@@ -36,6 +37,9 @@ import java.util.Map;
 import java.util.UUID;
 
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
 import androidx.core.graphics.Insets;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -74,63 +78,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         sharedPrefUtils.syncPrivateToWorldReadable(getApplicationContext(), "AllTransPref");
 
-        final RatingDialog ratingDialog = new RatingDialog.Builder(this)
-                .threshold(4)
-                .session(6)
-                .title(getString(R.string.feedback_title))
-                .positiveButtonText(getString(R.string.feedback_positiveButtonText))
-                .negativeButtonText(getString(R.string.feedback_negativeButtonText))
-                .formTitle(getString(R.string.feedback_formTitle))
-                .formHint(getString(R.string.feedback_formHint))
-                .formSubmitText(getString(R.string.feedback_formSubmitText))
-                .formCancelText(getString(R.string.feedback_formCancelText))
-                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
-                    @Override
-                    public void onFormSubmitted(String feedback) {
-                        try {
-                            if (uniqueID == null) {
-                                SharedPreferences sharedPrefs = sharedPrefUtils.getSharedPreferences(
-                                        getApplicationContext(), "PREF_UNIQUE_ID");
-                                uniqueID = sharedPrefs.getString("PREF_UNIQUE_ID", null);
-                                if (uniqueID == null) {
-                                    uniqueID = UUID.randomUUID().toString();
-                                    SharedPreferences.Editor editor = sharedPrefs.edit();
-                                    editor.putString("PREF_UNIQUE_ID", uniqueID);
-                                    editor.apply();
-                                }
-                            }
-
-                            OkHttpClient client = new OkHttpClient().newBuilder().build();
-                            MediaType mediaType = MediaType.parse("application/json");
-                            Gson gson = new Gson();
-                            Map<String, String> map = new HashMap<>();
-                            map.put("body", uniqueID + " ---- " + feedback);
-                            String resquestBody = gson.toJson(map);
-
-                            RequestBody body = RequestBody.create(resquestBody, mediaType);
-                            Request request = new Request.Builder()
-                                    .url("https://api.github.com/gists/fbe99628496b1d349347d3212c837d8d/comments")
-                                    .method("POST", body)
-                                    .addHeader("Authorization", "token "+getString(R.string.github_key))
-                                    .addHeader("Content-Type", "application/json")
-                                    .addHeader("accept", "*/*")
-                                    .build();
-                            client.newCall(request).enqueue(new Callback() {
-                                @Override
-                                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                                }
-                                @Override
-                                public void onResponse(@NotNull Call call, @NotNull Response response) {
-                                }
-                            });
-
-                        } catch (Throwable ignored) {
-                        }
-
-                    }
-                }).build();
-
-        ratingDialog.show();
+        maybeShowRatingDialog();
 
         SharedPreferences settings = sharedPrefUtils.getSharedPreferences(this, "AllTransPref");
         utils.Debug = settings.getBoolean("Debug", false);
@@ -221,6 +169,82 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     public void setToolbarTitle(String title) {
         if (toolbar != null) {
             toolbar.setTitle(title);
+        }
+    }
+
+
+    /** Material 3 rating prompt, shown after six launches. */
+    private void maybeShowRatingDialog() {
+        SharedPreferences prefs = sharedPrefUtils.getSharedPreferences(this, "AllTransPref");
+        if (prefs.getBoolean("rating_done", false) || prefs.getBoolean("rating_never", false)) {
+            return;
+        }
+        int sessions = prefs.getInt("rating_sessions", 0) + 1;
+        prefs.edit().putInt("rating_sessions", sessions).apply();
+        if (sessions < 6 || sessions % 6 != 0) {
+            return;
+        }
+
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_rating, null);
+        RatingBar ratingBar = view.findViewById(R.id.rating_bar);
+        TextInputEditText feedback = view.findViewById(R.id.rating_feedback);
+
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.feedback_title)
+                .setView(view)
+                .setPositiveButton(R.string.feedback_formSubmitText, (dialog, which) -> {
+                    prefs.edit().putBoolean("rating_done", true).apply();
+                    CharSequence text = feedback.getText();
+                    if (ratingBar.getRating() >= 4 && text != null
+                            && text.toString().trim().length() > 0) {
+                        sendFeedback(text.toString());
+                    }
+                })
+                .setNegativeButton(R.string.feedback_positiveButtonText, null)
+                .setNeutralButton(R.string.feedback_negativeButtonText, (dialog, which) ->
+                        prefs.edit().putBoolean("rating_never", true).apply())
+                .show();
+    }
+
+    private void sendFeedback(String feedback) {
+        try {
+            if (uniqueID == null) {
+                SharedPreferences sharedPrefs = sharedPrefUtils.getSharedPreferences(
+                        getApplicationContext(), "PREF_UNIQUE_ID");
+                uniqueID = sharedPrefs.getString("PREF_UNIQUE_ID", null);
+                if (uniqueID == null) {
+                    uniqueID = UUID.randomUUID().toString();
+                    SharedPreferences.Editor editor = sharedPrefs.edit();
+                    editor.putString("PREF_UNIQUE_ID", uniqueID);
+                    editor.apply();
+                }
+            }
+
+            OkHttpClient client = new OkHttpClient().newBuilder().build();
+            MediaType mediaType = MediaType.parse("application/json");
+            Gson gson = new Gson();
+            Map<String, String> map = new HashMap<>();
+            map.put("body", uniqueID + " ---- " + feedback);
+            String resquestBody = gson.toJson(map);
+
+            RequestBody body = RequestBody.create(resquestBody, mediaType);
+            Request request = new Request.Builder()
+                    .url("https://api.github.com/gists/fbe99628496b1d349347d3212c837d8d/comments")
+                    .method("POST", body)
+                    .addHeader("Authorization", "token " + getString(R.string.github_key))
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("accept", "*/*")
+                    .build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                }
+
+                @Override
+                public void onResponse(@NotNull Call call, @NotNull Response response) {
+                }
+            });
+        } catch (Throwable ignored) {
         }
     }
 
