@@ -156,7 +156,13 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         toolbar = findViewById(R.id.titleBar);
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
-        getSupportFragmentManager().addOnBackStackChangedListener(this::updateNavigationState);
+        getSupportFragmentManager().addOnBackStackChangedListener(() -> {
+            updateNavigationState();
+            if (bottomNavigationView != null
+                    && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+                setToolbarTitle(titleForSelection(bottomNavigationView.getSelectedItemId()));
+            }
+        });
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -182,8 +188,20 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.toReplace, fragment)
                 .commitAllowingStateLoss();
+        /* Set the title last: popBackStack triggers the back-stack listener,
+           which would otherwise restore the previous selection's title. */
         setToolbarTitle(title);
         updateNavigationState();
+    }
+
+    private String titleForSelection(int id) {
+        if (id == R.id.nav_settings) {
+            return getString(R.string.global_settings);
+        }
+        if (id == R.id.nav_help) {
+            return getString(R.string.instructions);
+        }
+        return getString(R.string.apps_to_translate);
     }
 
     /** Shows the back arrow and hides the bottom bar while a detail screen is open. */
@@ -200,16 +218,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             } else {
                 toolbar.setNavigationIcon((android.graphics.drawable.Drawable) null);
                 toolbar.setNavigationOnClickListener(null);
-            }
-        }
-        if (!detail && bottomNavigationView != null) {
-            int id = bottomNavigationView.getSelectedItemId();
-            if (id == R.id.nav_settings) {
-                setToolbarTitle(getString(R.string.global_settings));
-            } else if (id == R.id.nav_help) {
-                setToolbarTitle(getString(R.string.instructions));
-            } else {
-                setToolbarTitle(getString(R.string.apps_to_translate));
             }
         }
     }
