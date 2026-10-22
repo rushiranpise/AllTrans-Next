@@ -37,7 +37,10 @@ import java.util.Locale;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 
 class utils {
-    public static boolean Debug = true;
+    /* Off by default: the log used to dump the full prefs JSON, including the
+       Microsoft/Yandex subscription key, before the Debug preference was read.
+       Users can still enable logging from the app's settings. */
+    public static boolean Debug = false;
 
     public static boolean isExpModuleActive(Context context) {
 
