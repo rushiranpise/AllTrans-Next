@@ -21,7 +21,6 @@ package akhil.alltrans;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Binder;
@@ -52,18 +51,15 @@ class utils {
         try {
             ContentResolver contentResolver = context.getContentResolver();
             Uri uri = Uri.parse("content://me.weishu.exposed.CP/");
-            Bundle result = null;
+            Bundle result;
             try {
                 result = contentResolver.call(uri, "active", null, null);
             } catch (RuntimeException e) {
-                // TaiChi is killed, try invoke
-                try {
-                    Intent intent = new Intent("me.weishu.exp.ACTION_ACTIVE");
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                } catch (Throwable e1) {
-                    return false;
-                }
+                /* TaiChi/Exposed may be stopped. Previously this started its
+                   activity to wake it up, but background activity starts are
+                   blocked since Android 10 - just treat the module as
+                   inactive. */
+                return false;
             }
             if (result == null) {
                 result = contentResolver.call(uri, "active", null, null);
