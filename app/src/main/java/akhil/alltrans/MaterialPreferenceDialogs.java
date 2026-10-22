@@ -27,9 +27,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceGroup;
-import androidx.preference.PreferenceScreen;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
@@ -44,33 +41,7 @@ class MaterialPreferenceDialogs {
     private MaterialPreferenceDialogs() {
     }
 
-    /** Replaces the default dialogs for every list / edit-text preference. */
-    static void bindAll(PreferenceScreen screen) {
-        if (screen != null) {
-            bindGroup(screen);
-        }
-    }
-
-    private static void bindGroup(PreferenceGroup group) {
-        for (int i = 0; i < group.getPreferenceCount(); i++) {
-            Preference preference = group.getPreference(i);
-            if (preference instanceof PreferenceGroup) {
-                bindGroup((PreferenceGroup) preference);
-            } else if (preference instanceof ListPreference) {
-                preference.setOnPreferenceClickListener(p -> {
-                    showList((ListPreference) p);
-                    return true;
-                });
-            } else if (preference instanceof EditTextPreference) {
-                preference.setOnPreferenceClickListener(p -> {
-                    showEditText((EditTextPreference) p);
-                    return true;
-                });
-            }
-        }
-    }
-
-    private static void showList(ListPreference preference) {
+    static void showList(ListPreference preference) {
         CharSequence[] entries = preference.getEntries();
         CharSequence[] values = preference.getEntryValues();
         if (entries == null || values == null) {
@@ -87,7 +58,7 @@ class MaterialPreferenceDialogs {
                 .show();
     }
 
-    private static void showEditText(EditTextPreference preference) {
+    static void showEditText(EditTextPreference preference) {
         Context context = preference.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_edit_text, null);
         TextInputLayout layout = view.findViewById(R.id.dialog_edit_layout);

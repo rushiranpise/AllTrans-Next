@@ -238,7 +238,6 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
            be made readable by hand so XSharedPreferences can read it. */
         sharedPrefUtils.makeWorldReadable(getContext(), applicationInfo.packageName);
         addPreferencesFromResource(R.xml.perappprefs);
-        MaterialPreferenceDialogs.bindAll(getPreferenceScreen());
 
         AppHeaderPreference headerPreference =
                 new AppHeaderPreference(getContext(), applicationInfo);

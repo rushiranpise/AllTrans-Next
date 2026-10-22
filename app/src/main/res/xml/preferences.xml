@@ -25,7 +25,7 @@
         android:title="@string/appearance"
         app:iconSpaceReserved="false">
 
-        <ListPreference
+        <akhil.alltrans.MaterialListPreference
             app:iconSpaceReserved="false"
             android:defaultValue="system"
             android:entries="@array/themeNames"
@@ -46,7 +46,7 @@
 
     <PreferenceCategory android:title="@string/pref_cat_translate_settings" app:iconSpaceReserved="false">
 
-        <ListPreference
+        <akhil.alltrans.MaterialListPreference
             app:iconSpaceReserved="false"
             android:defaultValue="g"
             android:entries="@array/translatorProviderNames"
@@ -55,7 +55,7 @@
             android:summary="@string/translator_provider_summary"
             android:title="@string/translator_provider" />
 
-        <EditTextPreference
+        <akhil.alltrans.MaterialEditTextPreference
             app:iconSpaceReserved="false"
             android:defaultValue="@string/subKey_defaultValue"
             android:key="SubscriptionKey"
@@ -63,7 +63,7 @@
             android:singleLine="true"
             android:summary="@string/subKey_summary"
             android:title="@string/subKey" />
-        <ListPreference
+        <akhil.alltrans.MaterialListPreference
             app:iconSpaceReserved="false"
             android:defaultValue="auto"
             android:entries="@array/languageNames"
@@ -71,7 +71,7 @@
             android:key="TranslateFromLanguage"
             android:summary="@string/transFrom_summary"
             android:title="@string/transFrom" />
-        <ListPreference
+        <akhil.alltrans.MaterialListPreference
             app:iconSpaceReserved="false"
             android:defaultValue="en"
             android:entries="@array/languageNames"
@@ -97,7 +97,7 @@
             android:summaryOff="@string/scroll_summary_off"
             android:summaryOn="@string/scroll_summary_on"
             android:title="@string/scroll" />
-        <EditTextPreference
+        <akhil.alltrans.MaterialEditTextPreference
             app:iconSpaceReserved="false"
             android:defaultValue="@integer/default_delay"
             android:key="Delay"
@@ -105,7 +105,7 @@
             android:singleLine="true"
             android:summary="@string/delay_summary"
             android:title="@string/delay" />
-        <EditTextPreference
+        <akhil.alltrans.MaterialEditTextPreference
             app:iconSpaceReserved="false"
             android:defaultValue="@integer/default_delay_webview"
             android:key="DelayWebView"

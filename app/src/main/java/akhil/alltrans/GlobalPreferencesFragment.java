@@ -247,7 +247,6 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         sharedPrefUtils.setWorldReadableMode(preferenceManager);
         preferenceManager.setSharedPreferencesName("AllTransPref");
         addPreferencesFromResource(R.xml.preferences);
-        MaterialPreferenceDialogs.bindAll(getPreferenceScreen());
 
         /* Recreate the activity when the appearance changes so the new theme
            (and AMOLED surfaces) apply immediately. */
