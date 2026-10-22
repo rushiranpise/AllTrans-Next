@@ -31,7 +31,7 @@
             android:entries="@array/themeNames"
             android:entryValues="@array/themeValues"
             android:key="AppTheme"
-            android:summary="@string/theme_summary"
+            android:summary="%s"
             android:title="@string/theme_title" />
     </PreferenceCategory>
 

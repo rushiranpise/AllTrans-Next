@@ -24,8 +24,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -47,6 +50,7 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceViewHolder;
 
 
 public class LocalPreferenceFragment extends PreferenceFragmentCompat {
@@ -236,6 +240,11 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
         sharedPrefUtils.makeWorldReadable(getContext(), applicationInfo.packageName);
         addPreferencesFromResource(R.xml.perappprefs);
 
+        AppHeaderPreference headerPreference =
+                new AppHeaderPreference(getContext(), applicationInfo);
+        headerPreference.setOrder(-1000);
+        getPreferenceScreen().addPreference(headerPreference);
+
 
         String translatorProvider = settings.getString("TranslatorProvider", "g");
         assert translatorProvider != null;
@@ -318,4 +327,29 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
         setTargetFragment(null, -1);
     }
 
+    /** Header card with the app icon, name and package above the per-app settings. */
+    static class AppHeaderPreference extends Preference {
+        private final ApplicationInfo app;
+        private final PackageManager pm;
+
+        AppHeaderPreference(Context context, ApplicationInfo app) {
+            super(context);
+            this.app = app;
+            this.pm = context.getPackageManager();
+            setLayoutResource(R.layout.pref_app_header);
+            setSelectable(false);
+            setIconSpaceReserved(false);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
+            super.onBindViewHolder(holder);
+            ImageView icon = (ImageView) holder.findViewById(R.id.app_icon);
+            TextView name = (TextView) holder.findViewById(R.id.app_name);
+            TextView packageName = (TextView) holder.findViewById(R.id.app_package);
+            icon.setImageDrawable(pm.getApplicationIcon(app));
+            name.setText(pm.getApplicationLabel(app));
+            packageName.setText(app.packageName);
+        }
+    }
 }
