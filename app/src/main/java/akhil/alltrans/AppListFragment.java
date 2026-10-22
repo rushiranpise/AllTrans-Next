@@ -159,6 +159,10 @@ public class AppListFragment extends Fragment {
                 utils.debugLog(curApp.packageName);
                 LocalPreferenceFragment localPreferenceFragment = new LocalPreferenceFragment();
                 localPreferenceFragment.applicationInfo = curApp;
+                if (context instanceof MainActivity) {
+                    ((MainActivity) context).setToolbarTitle(
+                            pm.getApplicationLabel(curApp).toString());
+                }
                 context.getSupportFragmentManager().beginTransaction()
                         .replace(R.id.toReplace, localPreferenceFragment)
                         .addToBackStack(null)

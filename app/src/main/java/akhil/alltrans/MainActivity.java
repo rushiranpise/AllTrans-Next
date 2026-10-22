@@ -25,7 +25,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -37,6 +37,8 @@ import java.util.UUID;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -55,6 +57,9 @@ import okhttp3.Response;
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
     //public static String TAG = "alltrans";
     private static String uniqueID = null;
+
+    private Toolbar toolbar;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -148,47 +153,72 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         insetsController.setAppearanceLightStatusBars(lightBars);
         insetsController.setAppearanceLightNavigationBars(lightBars);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.toReplace, new AppListFragment())
-                .commitAllowingStateLoss();
+        toolbar = findViewById(R.id.titleBar);
+        bottomNavigationView = findViewById(R.id.bottom_nav);
 
-        Toolbar toolbar = findViewById(R.id.titleBar);
-        toolbar.setTitle(getString(R.string.app_name) + " - " + getString(R.string.translate_anywhere));
+        getSupportFragmentManager().addOnBackStackChangedListener(this::updateNavigationState);
 
-        TabLayout tabLayout = findViewById(R.id.tabs);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.toReplace, new AppListFragment())
-                                .commitAllowingStateLoss();
-                        break;
-                    case 1:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.toReplace, new GlobalPreferencesFragment())
-                                .commitAllowingStateLoss();
-                        break;
-                    case 2:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.toReplace, new InstructionsFragment())
-                                .commitAllowingStateLoss();
-                        break;
-                }
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_apps) {
+                showRootScreen(new AppListFragment(), getString(R.string.apps_to_translate));
+            } else if (id == R.id.nav_settings) {
+                showRootScreen(new GlobalPreferencesFragment(), getString(R.string.global_settings));
+            } else if (id == R.id.nav_help) {
+                showRootScreen(new InstructionsFragment(), getString(R.string.instructions));
             }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            return true;
         });
+
+        if (savedInstanceState == null) {
+            bottomNavigationView.setSelectedItemId(R.id.nav_apps);
+        } else {
+            updateNavigationState();
+        }
+    }
+
+    private void showRootScreen(Fragment fragment, String title) {
+        getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.toReplace, fragment)
+                .commitAllowingStateLoss();
+        setToolbarTitle(title);
+        updateNavigationState();
+    }
+
+    /** Shows the back arrow and hides the bottom bar while a detail screen is open. */
+    private void updateNavigationState() {
+        boolean detail = getSupportFragmentManager().getBackStackEntryCount() > 0;
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(detail ? View.GONE : View.VISIBLE);
+        }
+        if (toolbar != null) {
+            if (detail) {
+                toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+                toolbar.setNavigationOnClickListener(
+                        v -> getOnBackPressedDispatcher().onBackPressed());
+            } else {
+                toolbar.setNavigationIcon((android.graphics.drawable.Drawable) null);
+                toolbar.setNavigationOnClickListener(null);
+            }
+        }
+        if (!detail && bottomNavigationView != null) {
+            int id = bottomNavigationView.getSelectedItemId();
+            if (id == R.id.nav_settings) {
+                setToolbarTitle(getString(R.string.global_settings));
+            } else if (id == R.id.nav_help) {
+                setToolbarTitle(getString(R.string.instructions));
+            } else {
+                setToolbarTitle(getString(R.string.apps_to_translate));
+            }
+        }
+    }
+
+    /** Used by the per-app screen to show which app is being configured. */
+    public void setToolbarTitle(String title) {
+        if (toolbar != null) {
+            toolbar.setTitle(title);
+        }
     }
 
     @Override
