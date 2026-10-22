@@ -24,7 +24,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -32,14 +31,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,8 +44,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Locale;
@@ -57,23 +52,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 @SuppressWarnings("ALL")
 public class AppListFragment extends Fragment {
 
     private static SharedPreferences settings;
     private FragmentActivity context;
-    private android.widget.ListView listview;
-
+    private RecyclerView recyclerView;
     private EditText searchApps;
     private TextView noAppsFound;
     private PackageManager pm;
 
-    /* Full lists. The list currently on screen is derived from these by the
-       selected tab and the search query. */
-    private List<ApplicationInfo> userPackages = new ArrayList<>();
-    private List<ApplicationInfo> systemPackages = new ArrayList<>();
-    private StableArrayAdapter adapter;
+    private final List<ApplicationInfo> userPackages = new ArrayList<>();
+    private final List<ApplicationInfo> systemPackages = new ArrayList<>();
+    private AppsAdapter adapter;
     private int currentTab = 0;
     private String searchQuery = "";
 
@@ -90,29 +84,17 @@ public class AppListFragment extends Fragment {
         //noinspection ConstantConditions
         settings = sharedPrefUtils.getSharedPreferences(this.getActivity(), "AllTransPref");
 
-//        if (BuildConfig.DEBUG) {
-//            SharedPreferences.Editor editor = settings.edit();
-//            editor.putBoolean("codepath.apps.demointroandroid", true);
-//            editor.putBoolean("com.astroframe.seoulbus", true);
-//            editor.putBoolean("com.nhn.android.nmap", true);
-//            editor.putBoolean("com.kakao.taxi", true);
-//            editor.putBoolean("com.fineapp.yogiyo", true);
-//            editor.putBoolean("com.cgv.android.movieapp", true);
-//            editor.putBoolean("com.wooricard.smartapp", true);
-//            editor.putBoolean("com.google.android.talk", true);
-//            editor.putBoolean("com.ebay.global.gmarket", true);
-//            editor.putBoolean("com.foodfly.gcm", true);
-//            editor.putBoolean("com.ktcs.whowho", true);
-//            editor.putBoolean("Debug", true);
-//            editor.putString("SubscriptionKey", getString(R.string.microsoft_key));
-//            editor.apply();
-//        }
-
         //noinspection ConstantConditions
-        listview = getView().findViewById(R.id.AppsList);
-        searchApps = getView().findViewById(R.id.searchApps);
-        noAppsFound = getView().findViewById(R.id.noAppsFound);
+        View view = getView();
+        recyclerView = view.findViewById(R.id.apps_list);
+        searchApps = view.findViewById(R.id.searchApps);
+        noAppsFound = view.findViewById(R.id.noAppsFound);
+        MaterialButtonToggleGroup appTabs = view.findViewById(R.id.appTabs);
         pm = context.getPackageManager();
+
+        adapter = new AppsAdapter();
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
 
         searchApps.addTextChangedListener(new TextWatcher() {
             @Override
@@ -130,46 +112,16 @@ public class AppListFragment extends Fragment {
             }
         });
 
-        TabLayout appTabs = getView().findViewById(R.id.appTabs);
-        appTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                currentTab = tab.getPosition();
-                applyFilter();
+        appTabs.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (!isChecked) {
+                return;
             }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
+            currentTab = checkedId == R.id.tab_system ? 1 : 0;
+            applyFilter();
         });
+        appTabs.check(R.id.tab_user);
 
         new PrepareAdapter().execute();
-
-        listview.setChoiceMode(android.widget.ListView.CHOICE_MODE_MULTIPLE);
-        listview.setFastScrollEnabled(true);
-
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ApplicationInfo curApp = (ApplicationInfo) parent.getItemAtPosition(position);
-                utils.debugLog(curApp.packageName);
-                LocalPreferenceFragment localPreferenceFragment = new LocalPreferenceFragment();
-                localPreferenceFragment.applicationInfo = curApp;
-                if (context instanceof MainActivity) {
-                    ((MainActivity) context).setToolbarTitle(
-                            pm.getApplicationLabel(curApp).toString());
-                }
-                context.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.toReplace, localPreferenceFragment)
-                        .addToBackStack(null)
-                        .commitAllowingStateLoss();
-            }
-        });
-        fireBaseAnalytics();
     }
 
     /** Rebuilds the visible list from the selected tab and the search query. */
@@ -211,12 +163,29 @@ public class AppListFragment extends Fragment {
         });
     }
 
-    private void fireBaseAnalytics() {
-        // no-op
+    private void openApp(ApplicationInfo app) {
+        LocalPreferenceFragment localPreferenceFragment = new LocalPreferenceFragment();
+        localPreferenceFragment.applicationInfo = app;
+        if (context instanceof MainActivity) {
+            ((MainActivity) context).setToolbarTitle(pm.getApplicationLabel(app).toString());
+        }
+        context.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.toReplace, localPreferenceFragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss();
     }
 
-    private void fireBaseEnabledApps(List<ApplicationInfo> packages) {
-        // no-op
+    private void toggleApp(ApplicationInfo app, boolean enabled) {
+        String packageName = app.packageName;
+        if (enabled) {
+            settings.edit().putBoolean(packageName, true).apply();
+            sharedPrefUtils.getSharedPreferences(context, packageName)
+                    .edit().putBoolean("LocalEnabled", true).apply();
+        } else if (settings.contains(packageName)) {
+            settings.edit().remove(packageName).apply();
+            sharedPrefUtils.getSharedPreferences(context, packageName)
+                    .edit().putBoolean("LocalEnabled", false).apply();
+        }
     }
 
     //TODO: Check this does not mess things up.
@@ -225,129 +194,60 @@ public class AppListFragment extends Fragment {
         setTargetFragment(null, -1);
     }
 
-    static class ViewHolder {
-        TextView textView;
-        TextView textView2;
-        ImageView imageView;
-        CheckBox checkBox;
-    }
+    private class AppsAdapter extends RecyclerView.Adapter<AppsAdapter.ViewHolder> {
 
-    private class StableArrayAdapter extends ArrayAdapter<ApplicationInfo> {
+        private final List<ApplicationInfo> items = new ArrayList<>();
 
-        final PackageManager pm;
-        final HashMap<ApplicationInfo, Integer> mIdMap = new HashMap<>();
-        private final Context context2;
-        private final List<ApplicationInfo> values;
-        private final LayoutInflater inflater;
-
-        public StableArrayAdapter(Context context, @SuppressWarnings({"SameParameterValue", "UnusedParameters"}) int textViewResourceId,
-                                  List<ApplicationInfo> packages) {
-            super(context, android.R.layout.simple_list_item_multiple_choice, packages);
-            context2 = context;
-            pm = context2.getPackageManager();
-            inflater = (LayoutInflater) context2
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            values = new LinkedList<>(packages);
-            for (int i = 0; i < values.size(); ++i) {
-                mIdMap.put(values.get(i), i);
-            }
-        }
-
-        /** Replaces the visible entries (used by the search box and the tabs). */
-        void updateData(List<ApplicationInfo> packages) {
-            values.clear();
-            values.addAll(packages);
-            mIdMap.clear();
-            for (int i = 0; i < values.size(); ++i) {
-                mIdMap.put(values.get(i), i);
-            }
+        void updateData(List<ApplicationInfo> newItems) {
+            items.clear();
+            items.addAll(newItems);
             notifyDataSetChanged();
         }
 
-        /* "values" is the single source of truth; the ArrayAdapter's internal
-           list stays empty because rows are filtered/refilled at runtime. */
-        @Override
-        public int getCount() {
-            return values.size();
-        }
-
-        @Override
-        public ApplicationInfo getItem(int position) {
-            return values.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            ApplicationInfo item = getItem(position);
-            //noinspection ConstantConditions
-            return mIdMap.get(item);
-        }
-
-        @Override
-        public boolean hasStableIds() {
-            return true;
-        }
-
         @NonNull
-        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-
-            ViewHolder viewHolder;
-            if (convertView == null) {
-                convertView = inflater.inflate(R.layout.list_item, parent, false);
-                viewHolder = new ViewHolder();
-                viewHolder.textView = convertView.findViewById(R.id.firstLine);
-                viewHolder.textView2 = convertView.findViewById(R.id.secondLine);
-                viewHolder.imageView = convertView.findViewById(R.id.icon);
-                viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
-                convertView.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-            String packageName = values.get(position).packageName;
-            String label = (String) pm.getApplicationLabel(values.get(position));
-            Drawable icon = pm.getApplicationIcon(values.get(position));
-
-            viewHolder.textView.setText(label);
-            viewHolder.textView.setSelected(true);
-            viewHolder.textView2.setText(packageName);
-            viewHolder.textView2.setSelected(true);
-            viewHolder.imageView.setImageDrawable(icon);
-
-            viewHolder.checkBox.setTag(position);
-            utils.debugLog("For package " + packageName + " ");
-            if (settings.contains(packageName)) {
-                viewHolder.checkBox.setChecked(true);
-            } else {
-                viewHolder.checkBox.setChecked(false);
-            }
-
-            viewHolder.checkBox.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    CheckBox checkBox1 = (CheckBox) v;
-                    int position = (Integer) checkBox1.getTag();
-                    String packageName = values.get(position).packageName;
-                    utils.debugLog("CheckBox clicked!" + packageName);
-
-                    if (checkBox1.isChecked()) {
-                        settings.edit().putBoolean(packageName, true).apply();
-
-                        SharedPreferences localSettings = sharedPrefUtils.getSharedPreferences(context, packageName);
-                        localSettings.edit().putBoolean("LocalEnabled", true).apply();
-                    } else if (settings.contains(packageName)) {
-                        settings.edit().remove(packageName).apply();
-
-                        SharedPreferences localSettings = sharedPrefUtils.getSharedPreferences(context, packageName);
-                        localSettings.edit().putBoolean("LocalEnabled", false).apply();
-                    }
-                }
-            });
-            return convertView;
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.list_item, parent, false);
+            return new ViewHolder(view);
         }
 
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            ApplicationInfo app = items.get(position);
+            holder.title.setText(pm.getApplicationLabel(app));
+            holder.packageName.setText(app.packageName);
+            holder.icon.setImageDrawable(pm.getApplicationIcon(app));
+
+            holder.checkBox.setOnCheckedChangeListener(null);
+            holder.checkBox.setChecked(settings.contains(app.packageName));
+            holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) ->
+                    toggleApp(app, isChecked));
+            holder.itemView.setOnClickListener(v -> openApp(app));
+        }
+
+        @Override
+        public int getItemCount() {
+            return items.size();
+        }
+
+        class ViewHolder extends RecyclerView.ViewHolder {
+            final TextView title;
+            final TextView packageName;
+            final ImageView icon;
+            final MaterialCheckBox checkBox;
+
+            ViewHolder(View view) {
+                super(view);
+                title = view.findViewById(R.id.firstLine);
+                packageName = view.findViewById(R.id.secondLine);
+                icon = view.findViewById(R.id.icon);
+                checkBox = view.findViewById(R.id.checkBox);
+            }
+        }
     }
 
-    private class PrepareAdapter extends AsyncTask<Void, Void, StableArrayAdapter> {
+    private class PrepareAdapter extends AsyncTask<Void, Void, Void> {
         ProgressDialog dialog;
 
         @Override
@@ -359,24 +259,21 @@ public class AppListFragment extends Fragment {
             dialog.show();
         }
 
-        /* (non-Javadoc)
-         * @see android.os.AsyncTask#doInBackground(Params[])
-         */
         @Override
-        protected StableArrayAdapter doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
             final PackageManager pm = context.getPackageManager();
             //get a list of installed apps.
             final List<ApplicationInfo> packages = getInstalledApplications(context);
-            if (utils.isExpModuleActive(getContext())){
-                List<String> packagNames = utils.getExpApps(getContext());
-                utils.debugLog(packagNames + "");
+            if (utils.isExpModuleActive(context)) {
+                List<String> packagNames = utils.getExpApps(context);
                 ListIterator<ApplicationInfo> iter = packages.listIterator();
-                while(iter.hasNext()){
-                    if(!packagNames.contains(iter.next().packageName)){
+                while (iter.hasNext()) {
+                    if (!packagNames.contains(iter.next().packageName)) {
                         iter.remove();
                     }
                 }
             }
+
             /* Split into the User / System tabs. FLAG_SYSTEM marks preinstalled
                apps (including their updates), everything else is a user app. */
             List<ApplicationInfo> user = new ArrayList<>();
@@ -390,21 +287,14 @@ public class AppListFragment extends Fragment {
             }
             sortApps(user);
             sortApps(system);
-            userPackages = user;
-            systemPackages = system;
-
-            fireBaseEnabledApps(packages);
-            if (getActivity() != null)
-                return new StableArrayAdapter(getActivity(), android.R.layout.simple_list_item_multiple_choice, new ArrayList<ApplicationInfo>());
-            else
-                return null;
+            userPackages.clear();
+            userPackages.addAll(user);
+            systemPackages.clear();
+            systemPackages.addAll(system);
+            return null;
         }
 
-        protected void onPostExecute(StableArrayAdapter newAdapter) {
-            if (newAdapter == null)
-                return;
-            adapter = newAdapter;
-            listview.setAdapter(newAdapter);
+        protected void onPostExecute(Void result) {
             applyFilter();
             dialog.dismiss();
         }
@@ -444,4 +334,3 @@ public class AppListFragment extends Fragment {
         }
     }
 }
-

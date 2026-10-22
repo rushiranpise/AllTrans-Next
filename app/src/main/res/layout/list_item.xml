@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2017 Akhil Kedia
   ~ This file is part of AllTrans.
@@ -17,67 +18,68 @@
   ~
   -->
 
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeight"
-    android:descendantFocusability="blocksDescendants"
-    android:padding="6dip">
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp">
 
-
-    <CheckBox
-        android:id="@+id/checkBox"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="fill"
-        app:layout_marginEndPercent="90%"
-        app:layout_marginTopPercent="10%"
-        app:layout_widthPercent="10%" />
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="12dp">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:contentDescription="@string/app_icon"
-        android:gravity="fill"
-        android:src="@drawable/ic_list_icon_placeholder"
-        app:layout_marginStartPercent="10%"
-        app:layout_marginEndPercent="75%"
-        app:layout_widthPercent="15%" />
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:contentDescription="@string/app_icon" />
 
-    <TextView
-        android:id="@+id/firstLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:ellipsize="marquee"
-        android:gravity="fill"
-        android:text="@string/example_application"
-        android:textSize="16sp"
-        app:layout_heightPercent="50%"
-        app:layout_marginEndPercent="2%"
-        app:layout_marginStartPercent="28%"
-        app:layout_marginTopPercent="5%"
-        app:layout_widthPercent="70%"
-        android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="false" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/secondLine"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:ellipsize="marquee"
-        android:gravity="fill"
-        android:text="@string/description"
-        android:textSize="12sp"
-        app:layout_heightPercent="35%"
-        app:layout_marginEndPercent="2%"
-        app:layout_marginStartPercent="28%"
-        app:layout_marginTopPercent="60%"
-        app:layout_widthPercent="70%"
-        android:singleLine="true"
-        android:marqueeRepeatLimit="marquee_forever"
-        android:scrollHorizontally="false"/>
+            <TextView
+                android:id="@+id/firstLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/example_application"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
 
+            <TextView
+                android:id="@+id/secondLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/description"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+        </LinearLayout>
 
-</androidx.percentlayout.widget.PercentRelativeLayout>
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
