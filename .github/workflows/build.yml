@@ -1,0 +1,165 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release, e.g. 1.9.8. Leave blank to bump the patch of the current one.'
+        type: string
+        required: false
+
+      prerelease:
+        description: 'Prerelease'
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      KEYSTORE: ${{ secrets.KEYSTORE }}
+
+    outputs:
+      versionName: ${{ steps.version.outputs.versionName }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      # The version in app/build.gradle names the APKs, the tag and the release, so it is
+      # bumped before the build rather than after the release, where the built APK would
+      # already carry the old number.
+      - name: Bump Version
+        id: version
+        run: |
+          CURRENT_NAME=$(grep -oP 'versionName\s+"\K[0-9]+\.[0-9]+\.[0-9]+' app/build.gradle)
+          CURRENT_CODE=$(grep -oP 'versionCode\s+\K[0-9]+' app/build.gradle)
+          WANTED="${{ inputs.version }}"
+          [ -z "$WANTED" ] && WANTED=$(echo "$CURRENT_NAME" | awk -F. '{printf "%d.%d.%d", $1, $2, $3 + 1}')
+          echo "current $CURRENT_NAME ($CURRENT_CODE), releasing $WANTED"
+
+          if ! echo "$WANTED" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "::error::'$WANTED' is not a version in the form x.y.z"
+            exit 1
+          fi
+          echo "versionName=$WANTED" >> "$GITHUB_OUTPUT"
+
+          if [ "$WANTED" = "$CURRENT_NAME" ]; then
+            echo "app/build.gradle already says $WANTED, nothing to bump."
+            exit 0
+          fi
+
+          NEW_CODE=$((CURRENT_CODE + 1))
+          sed -i "s/versionName \"$CURRENT_NAME\"/versionName \"$WANTED\"/" app/build.gradle
+          sed -i "s/versionCode $CURRENT_CODE/versionCode $NEW_CODE/" app/build.gradle
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # [skip ci] is belt and braces: a push made with GITHUB_TOKEN does not start
+          # workflows anyway, but this keeps it quiet if that ever changes.
+          git commit -am "chore: bump version to $WANTED [skip ci]"
+          git push origin "HEAD:${{ github.ref_name }}"
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # Both variants are released every run, so the release APK always needs its signing
+      # secrets. Missing ones are a configuration error, not a reason to ship an unsigned
+      # APK.
+      - name: Validate Signing Config
+        run: |
+          if [ -z "$KEYSTORE" ]; then
+            echo "::error::Signing secrets are not configured. Add KEYSTORE (base64 of the keystore), KEYSTORE_PASSWORD, KEYSTORE_ALIAS and KEYSTORE_ALIAS_PASSWORD."
+            exit 1
+          fi
+
+      - name: Decode Keystore
+        run: |
+          echo "$KEYSTORE" | base64 --decode > "$RUNNER_TEMP/keystore.jks"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v5
+
+      - name: Build Debug and Release
+        run: |
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses > /dev/null || true
+          echo 'org.gradle.caching=true' >> gradle.properties
+          echo 'org.gradle.parallel=true' >> gradle.properties
+          chmod +x gradlew
+
+          ./gradlew :app:assembleDebug :app:assembleRelease \
+            -PRELEASE_STORE_FILE="$RUNNER_TEMP/keystore.jks" \
+            -PRELEASE_STORE_PASSWORD="${{ secrets.KEYSTORE_PASSWORD }}" \
+            -PRELEASE_KEY_ALIAS="${{ secrets.KEYSTORE_ALIAS }}" \
+            -PRELEASE_KEY_PASSWORD="${{ secrets.KEYSTORE_ALIAS_PASSWORD }}"
+
+          VERSION="${{ steps.version.outputs.versionName }}"
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk "artifacts/AllTrans-$VERSION-debug.apk"
+          cp app/build/outputs/apk/release/app-release.apk "artifacts/AllTrans-$VERSION-release.apk"
+          ls -l artifacts
+
+      - name: Upload APKs
+        uses: actions/upload-artifact@v6
+        with:
+          name: AllTrans-${{ steps.version.outputs.versionName }}
+          path: artifacts/*.apk
+
+  release:
+    needs: [build]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          # The tag has to land on the commit that was actually built.
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Create Release Tag
+        run: |
+          VERSION="${{ needs.build.outputs.versionName }}"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git rev-parse "v$VERSION" > /dev/null 2>&1; then
+            echo "Tag v$VERSION already exists, reusing it."
+          else
+            git tag "v$VERSION" -m "Release $VERSION"
+            git push origin "v$VERSION"
+          fi
+
+      - name: Download APKs
+        uses: actions/download-artifact@v7
+        with:
+          name: AllTrans-${{ needs.build.outputs.versionName }}
+          path: files
+
+      - name: Create Draft Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.build.outputs.versionName }}
+        run: |
+          FLAGS="--draft"
+          [ "${{ inputs.prerelease }}" = "true" ] && FLAGS="$FLAGS --prerelease"
+
+          # A re-run for the same version refreshes the assets instead of failing.
+          if gh release view "v$VERSION" > /dev/null 2>&1; then
+            gh release upload "v$VERSION" files/*.apk --clobber
+          else
+            gh release create "v$VERSION" files/*.apk \
+              --title "AllTrans $VERSION" \
+              --generate-notes \
+              $FLAGS
+          fi
