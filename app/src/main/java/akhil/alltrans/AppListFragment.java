@@ -27,14 +27,19 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.material.tabs.TabLayout;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,6 +51,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,6 +64,18 @@ public class AppListFragment extends Fragment {
     private static SharedPreferences settings;
     private FragmentActivity context;
     private android.widget.ListView listview;
+
+    private EditText searchApps;
+    private TextView noAppsFound;
+    private PackageManager pm;
+
+    /* Full lists. The list currently on screen is derived from these by the
+       selected tab and the search query. */
+    private List<ApplicationInfo> userPackages = new ArrayList<>();
+    private List<ApplicationInfo> systemPackages = new ArrayList<>();
+    private StableArrayAdapter adapter;
+    private int currentTab = 0;
+    private String searchQuery = "";
 
     @Nullable
     @Override
@@ -92,6 +110,42 @@ public class AppListFragment extends Fragment {
 
         //noinspection ConstantConditions
         listview = getView().findViewById(R.id.AppsList);
+        searchApps = getView().findViewById(R.id.searchApps);
+        noAppsFound = getView().findViewById(R.id.noAppsFound);
+        pm = context.getPackageManager();
+
+        searchApps.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                searchQuery = s == null ? "" : s.toString();
+                applyFilter();
+            }
+        });
+
+        TabLayout appTabs = getView().findViewById(R.id.appTabs);
+        appTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                currentTab = tab.getPosition();
+                applyFilter();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
 
         new PrepareAdapter().execute();
 
@@ -112,6 +166,45 @@ public class AppListFragment extends Fragment {
             }
         });
         fireBaseAnalytics();
+    }
+
+    /** Rebuilds the visible list from the selected tab and the search query. */
+    private void applyFilter() {
+        if (adapter == null || pm == null) {
+            return;
+        }
+        List<ApplicationInfo> base = currentTab == 1 ? systemPackages : userPackages;
+        String query = searchQuery == null ? "" : searchQuery.trim().toLowerCase(Locale.ROOT);
+        List<ApplicationInfo> filtered = new ArrayList<>();
+        for (ApplicationInfo ai : base) {
+            if (query.isEmpty()) {
+                filtered.add(ai);
+                continue;
+            }
+            String label = pm.getApplicationLabel(ai).toString().toLowerCase(Locale.ROOT);
+            if (label.contains(query) || ai.packageName.toLowerCase(Locale.ROOT).contains(query)) {
+                filtered.add(ai);
+            }
+        }
+        adapter.updateData(filtered);
+        if (noAppsFound != null) {
+            noAppsFound.setVisibility(filtered.isEmpty() ? View.VISIBLE : View.GONE);
+        }
+    }
+
+    /** Enabled apps first, then alphabetically by label. */
+    private void sortApps(List<ApplicationInfo> packages) {
+        Collections.sort(packages, new Comparator<ApplicationInfo>() {
+            public int compare(ApplicationInfo a, ApplicationInfo b) {
+                if (settings.contains(a.packageName) && !settings.contains(b.packageName))
+                    return -1;
+                if (!settings.contains(a.packageName) && settings.contains(b.packageName))
+                    return 1;
+                String labelA = pm.getApplicationLabel(a).toString().toLowerCase();
+                String labelB = pm.getApplicationLabel(b).toString().toLowerCase();
+                return labelA.compareTo(labelB);
+            }
+        });
     }
 
     private void fireBaseAnalytics() {
@@ -154,6 +247,29 @@ public class AppListFragment extends Fragment {
             for (int i = 0; i < values.size(); ++i) {
                 mIdMap.put(values.get(i), i);
             }
+        }
+
+        /** Replaces the visible entries (used by the search box and the tabs). */
+        void updateData(List<ApplicationInfo> packages) {
+            values.clear();
+            values.addAll(packages);
+            mIdMap.clear();
+            for (int i = 0; i < values.size(); ++i) {
+                mIdMap.put(values.get(i), i);
+            }
+            notifyDataSetChanged();
+        }
+
+        /* "values" is the single source of truth; the ArrayAdapter's internal
+           list stays empty because rows are filtered/refilled at runtime. */
+        @Override
+        public int getCount() {
+            return values.size();
+        }
+
+        @Override
+        public ApplicationInfo getItem(int position) {
+            return values.get(position);
         }
 
         @Override
@@ -257,28 +373,35 @@ public class AppListFragment extends Fragment {
                     }
                 }
             }
-            Collections.sort(packages, new Comparator<ApplicationInfo>() {
-                public int compare(ApplicationInfo a, ApplicationInfo b) {
-                    if (settings.contains(a.packageName) && !settings.contains(b.packageName))
-                        return -1;
-                    if (!settings.contains(a.packageName) && settings.contains(b.packageName))
-                        return 1;
-                    String labelA = pm.getApplicationLabel(a).toString().toLowerCase();
-                    String labelB = pm.getApplicationLabel(b).toString().toLowerCase();
-                    return labelA.compareTo(labelB);
+            /* Split into the User / System tabs. FLAG_SYSTEM marks preinstalled
+               apps (including their updates), everything else is a user app. */
+            List<ApplicationInfo> user = new ArrayList<>();
+            List<ApplicationInfo> system = new ArrayList<>();
+            for (ApplicationInfo ai : packages) {
+                if ((ai.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                    system.add(ai);
+                } else {
+                    user.add(ai);
                 }
-            });
+            }
+            sortApps(user);
+            sortApps(system);
+            userPackages = user;
+            systemPackages = system;
+
             fireBaseEnabledApps(packages);
             if (getActivity() != null)
-                return new StableArrayAdapter(getActivity(), android.R.layout.simple_list_item_multiple_choice, packages);
+                return new StableArrayAdapter(getActivity(), android.R.layout.simple_list_item_multiple_choice, new ArrayList<ApplicationInfo>());
             else
                 return null;
         }
 
-        protected void onPostExecute(StableArrayAdapter adapter) {
-            if (adapter == null)
+        protected void onPostExecute(StableArrayAdapter newAdapter) {
+            if (newAdapter == null)
                 return;
-            listview.setAdapter(adapter);
+            adapter = newAdapter;
+            listview.setAdapter(newAdapter);
+            applyFilter();
             dialog.dismiss();
         }
 

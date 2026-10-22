@@ -36,6 +36,12 @@
     <string name="global_settings">"Global Settings"</string>
     <string name="instructions">"Instructions"</string>
 
+    <!-- Apps list: search + user/system tabs -->
+    <string name="search_apps_hint">"Search apps"</string>
+    <string name="tab_user_apps">"User apps"</string>
+    <string name="tab_system_apps">"System apps"</string>
+    <string name="no_apps_found">"No apps found"</string>
+
     <!-- Feedback Dialog -->
     <string name="feedback_title">"Would you like to rate this app?"</string>
     <string name="feedback_positiveButtonText">"Not now"</string>
