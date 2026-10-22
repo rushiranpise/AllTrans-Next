@@ -249,6 +249,20 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         preferenceManager.setSharedPreferencesName("AllTransPref");
         addPreferencesFromResource(R.xml.preferences);
 
+        /* Recreate the activity when the appearance changes so the new theme
+           (and AMOLED surfaces) apply immediately. */
+        Preference themePreference = findPreference(ThemeManager.KEY);
+        if (themePreference != null) {
+            themePreference.setOnPreferenceChangeListener((preference, newValue) -> {
+                new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                    if (getActivity() != null) {
+                        getActivity().recreate();
+                    }
+                }, 100);
+                return true;
+            });
+        }
+
         handleSubProviderChange();
         ListPreference translatorProvider = findPreference("TranslatorProvider");
         assert translatorProvider != null;

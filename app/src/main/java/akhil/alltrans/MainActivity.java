@@ -65,6 +65,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ThemeManager.apply(this);
         super.onCreate(savedInstanceState);
         sharedPrefUtils.syncPrivateToWorldReadable(getApplicationContext(), "AllTransPref");
 
@@ -143,8 +144,9 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         });
         WindowInsetsControllerCompat insetsController =
                 WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-        insetsController.setAppearanceLightStatusBars(true);
-        insetsController.setAppearanceLightNavigationBars(true);
+        boolean lightBars = !ThemeManager.isDark(this);
+        insetsController.setAppearanceLightStatusBars(lightBars);
+        insetsController.setAppearanceLightNavigationBars(lightBars);
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.toReplace, new AppListFragment())

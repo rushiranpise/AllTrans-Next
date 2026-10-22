@@ -22,6 +22,11 @@
     <integer name="default_delay_webview">500</integer>
 
     <string name="app_name">"AllTrans"</string>
+
+    <!-- Appearance -->
+    <string name="appearance">"Appearance"</string>
+    <string name="theme_title">"Theme"</string>
+    <string name="theme_summary">"Follow the system, or force light, dark or AMOLED black"</string>
     <string name="loading">"Loading List of Applications - Please Wait"</string>
     <string name="clear_cache_success">"Please force-close the translated app! Translate Cache for this app will be erased next time the app starts!!"</string>
     <string name="wut_why_null">"Could not load the Per-app preference page. Close and re-open application again."</string>

@@ -24,6 +24,20 @@
         <item>com.android.providers.settings</item>
     </string-array>
 
+    <string-array name="themeNames" translatable="false">
+        <item>Follow system</item>
+        <item>Light</item>
+        <item>Dark</item>
+        <item>AMOLED black</item>
+    </string-array>
+
+    <string-array name="themeValues" translatable="false">
+        <item>system</item>
+        <item>light</item>
+        <item>dark</item>
+        <item>amoled</item>
+    </string-array>
+
     <string-array name="translatorProviderCodes" translatable="false">
         <item>g</item>
         <item>m</item>

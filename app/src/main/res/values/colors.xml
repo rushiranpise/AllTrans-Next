@@ -1,8 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright 2017 Akhil Kedia
+  ~ This file is part of AllTrans.
+  ~
+  ~ AllTrans is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ AllTrans is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with AllTrans. If not, see <http://www.gnu.org/licenses/>.
+  ~
+  -->
+
 <resources>
-    <color name="colorPrimary">#3A3A3F</color>
-    <color name="colorPrimaryDark">#353539</color>
-    <color name="colorAccent">#FF70A0</color>
-    <color name="black">#B5B5B5</color>
-    <color name="darkerBlack">#8E8E8E</color>
+    <!-- Fallback palette. On Android 12+ Material You replaces every role with
+         the wallpaper-derived palette at runtime. -->
+    <color name="md_primary">#3D5A80</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_primary_container">#D6E3FF</color>
+    <color name="md_on_primary_container">#001B3D</color>
+    <color name="md_secondary">#565E71</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+    <color name="md_secondary_container">#DAE2F9</color>
+    <color name="md_on_secondary_container">#131C2B</color>
+    <color name="md_tertiary">#705575</color>
+    <color name="md_surface">#FDFBFF</color>
+    <color name="md_on_surface">#1B1B1F</color>
+    <color name="md_surface_variant">#E1E2EC</color>
+    <color name="md_on_surface_variant">#44464F</color>
+    <color name="md_outline">#74777F</color>
+
+    <!-- Legacy names still referenced by a few old styles. -->
+    <color name="black">#1B1B1F</color>
+    <color name="darkerBlack">#44464F</color>
 </resources>
