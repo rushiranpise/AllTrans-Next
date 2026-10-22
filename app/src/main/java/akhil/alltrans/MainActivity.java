@@ -36,6 +36,11 @@ import java.util.Map;
 import java.util.UUID;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.multidex.MultiDex;
 import okhttp3.Call;
@@ -125,6 +130,22 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         utils.Debug = settings.getBoolean("Debug", false);
 
         setContentView(R.layout.activity_main);
+
+        /* Android 15+ (targetSdk 35) draws the app edge-to-edge: the content is
+           laid out behind the status and navigation bars. Pad the root view by
+           the system bar insets so the toolbar and list stay fully visible. */
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        View rootView = findViewById(R.id.main_root);
+        ViewCompat.setOnApplyWindowInsetsListener(rootView, (view, windowInsets) -> {
+            Insets bars = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
+            view.setPadding(bars.left, bars.top, bars.right, bars.bottom);
+            return windowInsets;
+        });
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        insetsController.setAppearanceLightStatusBars(true);
+        insetsController.setAppearanceLightNavigationBars(true);
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.toReplace, new AppListFragment())
                 .commitAllowingStateLoss();
