@@ -79,7 +79,12 @@ class ThemeManager {
             activity.setTheme(R.style.Theme_AllTrans_Amoled);
         } else {
             activity.setTheme(R.style.Theme_AllTrans);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            /* Only follow Material You in system mode. When the appearance is
+               forced to light or dark, DynamicColors reads the SYSTEM palette
+               (which may be the opposite mode) and produces dark surfaces or
+               light-on-light text. The static light/dark palettes are always
+               consistent with the forced mode. */
+            if (SYSTEM.equals(mode) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 DynamicColors.applyToActivityIfAvailable(activity);
             }
         }

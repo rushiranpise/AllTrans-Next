@@ -37,12 +37,30 @@
         <item name="colorSurfaceVariant">@color/md_surface_variant</item>
         <item name="colorOnSurfaceVariant">@color/md_on_surface_variant</item>
         <item name="colorOutline">@color/md_outline</item>
+        <!-- Explicit container roles: the bottom bar and cards read these, and
+             relying on the parent's DayNight values produced dark surfaces in
+             forced light mode. -->
+        <item name="colorSurfaceContainerLowest">#FFFFFF</item>
+        <item name="colorSurfaceContainerLow">#F7F2FA</item>
+        <item name="colorSurfaceContainer">#F3EDF7</item>
+        <item name="colorSurfaceContainerHigh">#ECE6F0</item>
+        <item name="colorSurfaceContainerHighest">#E6E0E9</item>
         <item name="android:windowBackground">@color/md_surface</item>
+        <item name="android:textColorPrimary">@color/md_on_surface</item>
+        <item name="android:textColorSecondary">@color/md_on_surface_variant</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">true</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="preferenceTheme">@style/Theme.AllTrans.Preference</item>
+    </style>
+
+    <!-- The stock preference overlay resolved its text colours from the night
+         palette, producing light text on light surfaces. Bind them to our own
+         per-configuration colour resources instead. -->
+    <style name="Theme.AllTrans.Preference" parent="@style/PreferenceThemeOverlay">
+        <item name="android:textColorPrimary">@color/md_on_surface</item>
+        <item name="android:textColorSecondary">@color/md_on_surface_variant</item>
     </style>
 
     <!-- AMOLED variant: pure black surfaces for dark mode. -->
@@ -68,11 +86,13 @@
         <item name="colorOutline">@color/md_outline</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
+        <item name="android:textColorPrimary">@color/md_on_surface</item>
+        <item name="android:textColorSecondary">@color/md_on_surface_variant</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="preferenceTheme">@style/Theme.AllTrans.Preference</item>
     </style>
 
     <!-- Keep the old entry point working. -->
