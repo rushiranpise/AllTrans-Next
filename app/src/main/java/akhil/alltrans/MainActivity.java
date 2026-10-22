@@ -170,8 +170,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 showRootScreen(new AppListFragment(), getString(R.string.apps_to_translate));
             } else if (id == R.id.nav_settings) {
                 showRootScreen(new GlobalPreferencesFragment(), getString(R.string.global_settings));
-            } else if (id == R.id.nav_help) {
-                showRootScreen(new InstructionsFragment(), getString(R.string.instructions));
             }
             return true;
         });
@@ -197,9 +195,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     private String titleForSelection(int id) {
         if (id == R.id.nav_settings) {
             return getString(R.string.global_settings);
-        }
-        if (id == R.id.nav_help) {
-            return getString(R.string.instructions);
         }
         return getString(R.string.apps_to_translate);
     }
