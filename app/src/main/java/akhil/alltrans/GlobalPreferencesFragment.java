@@ -291,6 +291,15 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         });
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        /* MODE_WORLD_READABLE is gone on Android 7+, so the prefs file is
+           widened by hand after edits flush - otherwise XSharedPreferences in
+           hooked apps cannot read the new values. */
+        sharedPrefUtils.makeWorldReadable(getContext(), "AllTransPref");
+    }
+
     //TODO: Check this does not mess things up.
     @Override
     public void onSaveInstanceState(@NonNull final Bundle outState) {

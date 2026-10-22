@@ -227,10 +227,13 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
 
         utils.debugLog("Is it enabled for package " + applicationInfo.packageName + " answer -" + settings.contains(applicationInfo.packageName));
         if (settings.contains(applicationInfo.packageName)) {
-            preferenceManager.getSharedPreferences().edit().putBoolean("LocalEnabled", true).apply();
+            preferenceManager.getSharedPreferences().edit().putBoolean("LocalEnabled", true).commit();
         } else {
-            preferenceManager.getSharedPreferences().edit().putBoolean("LocalEnabled", false).apply();
+            preferenceManager.getSharedPreferences().edit().putBoolean("LocalEnabled", false).commit();
         }
+        /* MODE_WORLD_READABLE is gone on Android 7+; the per-app prefs file must
+           be made readable by hand so XSharedPreferences can read it. */
+        sharedPrefUtils.makeWorldReadable(getContext(), applicationInfo.packageName);
         addPreferencesFromResource(R.xml.perappprefs);
 
 
@@ -295,6 +298,18 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        /* Preference edits are flushed asynchronously, so widen the file
+           permissions again when leaving the screen - otherwise a value changed
+           here would stay unreadable to XSharedPreferences in hooked apps. */
+        if (applicationInfo != null) {
+            sharedPrefUtils.makeWorldReadable(getContext(), applicationInfo.packageName);
+        }
+        sharedPrefUtils.makeWorldReadable(getContext(), "AllTransPref");
     }
 
     //TODO: Check this does not mess things up.
