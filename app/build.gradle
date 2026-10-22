@@ -43,7 +43,7 @@ android {
 
     defaultConfig {
         applicationId "akhil.alltrans"
-        minSdkVersion 19
+        minSdkVersion 21
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 30
         versionCode 197
@@ -88,8 +88,11 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
 
-    implementation 'com.google.mlkit:translate:17.0.1'
-    implementation 'com.google.mlkit:language-id:16.1.1'
+    /* ML Kit 17.0.3 / 17.0.6 ship 16 KB-aligned native libraries; older
+       versions (17.0.1 / 16.1.1) bundle 4 KB-aligned .so files and trigger the
+       "not 16 KB compatible" dialog on Android 15+. They require minSdk 21. */
+    implementation 'com.google.mlkit:translate:17.0.3'
+    implementation 'com.google.mlkit:language-id:17.0.6'
     implementation 'androidx.multidex:multidex:2.0.1'
 
     implementation 'com.codemybrainsout.rating:ratingdialog:1.0.8'
