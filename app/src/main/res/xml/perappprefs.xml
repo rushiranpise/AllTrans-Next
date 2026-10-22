@@ -35,13 +35,11 @@
         android:summaryOff="@string/overRide_global_summary_off"
         android:summaryOn="@string/overRide_global_summary_on"
         android:title="@string/overRide_global" />
-    <akhil.alltrans.MaterialSwitchPreference
+    <Preference
         app:iconSpaceReserved="false"
-        android:defaultValue="false"
         android:key="ClearCache"
         android:persistent="false"
         android:summary="@string/clear_cache_summary"
-        android:summaryOff="@string/clear_cache_summary"
         android:title="@string/clear_cache" />
 
     <PreferenceCategory android:title="@string/pref_cat_translate_settings" app:iconSpaceReserved="false">
