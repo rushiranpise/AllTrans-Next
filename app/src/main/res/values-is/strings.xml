@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Hleð inn lista yfir umsóknir-Vinsamlegast bíðið"</string>
 	<string name="clear_cache_success">"Vinsamlegast aflið-Lokaðu þýtt App! Þýða skyndiminni fyrir þetta App verður eytt næst þegar forritið byrjar!!"</string>
 	<string name="wut_why_null">"Ekki tókst að hlaða inn síðunni val á forriti fyrir forrit. Loka og aftur opna umsókn á ný."</string>

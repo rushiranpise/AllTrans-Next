@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (Kõik Trans)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Rakenduste nimekirja laadimine - Palun oodake"</string>
 	<string name="clear_cache_success">"Palun force-sulgege tõlgitud app! Tõlgi cache selle rakenduse kustutatakse järgmine kord, kui rakendus käivitub!"</string>
 	<string name="wut_why_null">"Rakendusepõhise eelistuse lehte ei saanud laadida. Sulgege rakendus ja avage see uuesti."</string>

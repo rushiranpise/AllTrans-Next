@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Гаризалар исемлеген йөкләү көтәргә зинһар"</string>
 	<string name="clear_cache_success">"Тәрҗемә ителгән кушымтаны көчләп ябарга! Бу кушымта өчен Кэш тәрҗемә итү кушымта башлангач бетереләчәк!"</string>
 	<string name="wut_why_null">"Пер-кушымтаның өстенлек битен йөкли алмады. Кабат кушымтаны ябып һәм кабат ачу."</string>

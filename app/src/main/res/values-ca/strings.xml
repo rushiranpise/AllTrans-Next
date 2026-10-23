@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Carregant llista d&apos;aplicacions-esperi si us plau"</string>
 	<string name="clear_cache_success">"Si us plau, força-tanqueu l&apos;aplicació traduïda! Traduir memòria cau per a aquesta aplicació s&apos;esborrarà la propera vegada que comenci l&apos;aplicació!"</string>
 	<string name="wut_why_null">"No es pot carregar la pàgina de preferència per aplicació. Tanqui i reobri aplicació una altra vegada."</string>

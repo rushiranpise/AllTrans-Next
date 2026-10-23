@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"올트랜스"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"응용 프로그램 로드 목록 - 기다려주세요"</string>
 	<string name="clear_cache_success">"번역 된 응용 프로그램을 강제로 닫으십시오! 이 응용 프로그램에 대한 캐시를 번역앱이 시작 될 때 삭제됩니다!"</string>
 	<string name="wut_why_null">"앱별 기본 설정 페이지를 로드할 수 없습니다. 응용 프로그램을 닫고 다시 엽니다."</string>

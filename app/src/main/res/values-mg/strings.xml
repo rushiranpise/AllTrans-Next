@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Entana Lisitry ny fanaovana Fampiharana ary Miandrasa kely Azafady"</string>
 	<string name="clear_cache_success">"Mba ataovy akaikin&apos; ny application voadika izany! Ny fandikana ny Cache valley ho an&apos; ity rafi-baovao ity dia ho fafana amin&apos; ny fotoana manaraka ny hoe ny application dia manomboka!!"</string>
 	<string name="wut_why_null">"Tsy afaka ny ho enta-mavesatra ao amin&apos; ny pejy izany ny rafibaovao. Hidio indray ny fampiharana ny fanaovana izany."</string>

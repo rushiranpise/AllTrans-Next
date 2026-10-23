@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.content.Context;
 import android.content.SharedPreferences;

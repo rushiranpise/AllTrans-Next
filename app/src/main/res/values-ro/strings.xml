@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Loading..."</string>
 	<string name="clear_cache_success">"Vă rugăm să forțați-închideți aplicația tradusă! Traducere cache pentru această aplicație va fi șters data viitoare când aplicația începe!"</string>
 	<string name="wut_why_null">"Imposibil de încărcat pagina de preferințe per aplicație. Închideți și redeschideți din nou aplicația."</string>

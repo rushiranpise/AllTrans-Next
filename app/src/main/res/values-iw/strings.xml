@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"מיכל אלטרנס"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"רשימת הפניות-נא המתן"</string>
 	<string name="clear_cache_success">"בבקשה לכפות לסגור את האפליקציה מתורגם! תרגם מטמון עבור יישום זה יימחק בפעם הבאה app מתחיל!!"</string>
 	<string name="wut_why_null">"לא היתה אפשרות לטעון את דף ההעדפה לפי יישום. סגור שוב את היישום ופתח אותו מחדש."</string>

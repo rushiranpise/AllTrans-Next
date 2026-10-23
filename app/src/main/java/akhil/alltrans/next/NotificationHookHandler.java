@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.app.Notification;
 import android.app.Notification.MessagingStyle.Message;
@@ -38,7 +38,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
 
-import static akhil.alltrans.SetTextHookHandler.isNotWhiteSpace;
+import static akhil.alltrans.next.SetTextHookHandler.isNotWhiteSpace;
 
 
 public class NotificationHookHandler extends XC_MethodReplacement implements OriginalCallable {

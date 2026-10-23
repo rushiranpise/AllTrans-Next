@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lavetaki ni ituvatuva ni ivolakerekere-yalovinaka wawa"</string>
 	<string name="clear_cache_success">"Yalovinaka raica matua na app sa vakadewataki tu! Na vakadewataki Cache me baleta na app oqo ena bokoci ena gauna e tarava sa tekivu kina na app!!"</string>
 	<string name="wut_why_null">"E sega ni rawa ni laki lavelavetaki na draunipepa ni dua na app. Me totolo toka na nomu ivolakerekere."</string>

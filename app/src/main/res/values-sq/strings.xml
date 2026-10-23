@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lista e ngarkimit të aplikimeve - Ju lutem prisni"</string>
 	<string name="clear_cache_success">"Ju lutem mbyllni me forcë app e përkthyer! Translate Cache për këtë app do të fshij herën tjetër kur të fillojë app!!"</string>
 	<string name="wut_why_null">"I pamundur ngarkimi i faqes së preferencë per-app. Mbyllni dhe ri-hapni aplikacionin përsëri."</string>

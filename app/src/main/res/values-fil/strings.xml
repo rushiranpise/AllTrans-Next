@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Paglo-load ng listahan ng mga application-mangyaring maghintay"</string>
 	<string name="clear_cache_success">"Mangyaring pilitin-isara ang isinalin app! Isalin ang cache para sa app na ito ay mabubura sa susunod na oras ng app nagsisimula!!"</string>
 	<string name="wut_why_null">"Hindi maikarga ang pahina sa bawat app na kagustuhan. Isara at muling buksan ang application muli."</string>

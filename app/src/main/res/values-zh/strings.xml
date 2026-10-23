@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"全部转轨"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"加载应用程序列表 - 请稍候"</string>
 	<string name="clear_cache_success">"请强制关闭翻译的应用程序！翻译缓存这个程序将被擦除下一次应用程序开始！！"</string>
 	<string name="wut_why_null">"无法加载&quot;每个应用首选项&quot;页。再次关闭并重新打开应用程序。"</string>

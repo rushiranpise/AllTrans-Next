@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"ಅಪ್ಲಿಕೇಶನ್ ಗಳ ಪಟ್ಟಿ ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ - ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ"</string>
 	<string name="clear_cache_success">"ದಯವಿಟ್ಟು ಅನುವಾದಿತ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಬಲವಂತವಾಗಿ ಮುಚ್ಚಿ! ಈ ಆಪ್ ಗಾಗಿ ಅನುವಾದ ಕ್ಯಾಶ್ ಮುಂದಿನ ಬಾರಿ ಆಪ್ ಸ್ಟಾರ್ಟ್ ಆಗುತ್ತದೆ.!!"</string>
 	<string name="wut_why_null">"ಪರ್-ಅಪ್ ಆದ್ಯತೆ ಪುಟವನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಮತ್ತೆ ಮುಚ್ಚಿ ಮತ್ತು ಪುನಃ ತೆರೆಯಿರಿ."</string>

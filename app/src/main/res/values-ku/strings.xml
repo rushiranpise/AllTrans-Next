@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"لیستی بارکردنی بەرجەستەکراوەکان - تکایە چاوەڕوانبە"</string>
 	<string name="clear_cache_success">"تکایە کاربەرنامەی وەرگێڕدراو بە زۆر دابخە! وەرگێڕانی Cache بۆ ئەم کاربەرنامەیە دەسڕێتەوە جاری داهاتوو کە کاربەرنامەکە دەست پێدەکات!!"</string>
 	<string name="wut_why_null">"نەیتوانی لاپەڕەی پەسەندی Per-app باربکات. دووبارە کاربەرنامەدابخە و دووبارە بیکەرەوە."</string>

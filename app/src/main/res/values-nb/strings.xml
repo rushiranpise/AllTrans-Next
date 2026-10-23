@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (andre)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Laster liste over programmer - Vennligst vent"</string>
 	<string name="clear_cache_success">"Vennligst ring den oversatte appen! Oversett Cache for dette programmet vil bli slettet neste gang appen starter!"</string>
 	<string name="wut_why_null">"Kan ikke laste inn siden Fortrinnsrett per app. Lukk og åpne programmet på nytt på nytt."</string>

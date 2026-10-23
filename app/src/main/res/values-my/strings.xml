@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTras"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"application များ စာရင်း တင် ခြင်း - ကျေးဇူးပြု ၍ စောင့် ပါ"</string>
 	<string name="clear_cache_success">"ဘာသာပြန်ထားတဲ့ ပရိုဂရယ်ကို အတင်းပိတ်လိုက်ပါ! ဒီပရိုဂရမ်အတွက် Kche ကို နောက်တစ်ခါ ပရိုဂရမ်စတင်လိုက်ရင် ပယ်ဖျက်ခံရပါလိမ့်မယ်!"</string>
 	<string name="wut_why_null">"ပါ-app ကြိုက်နှစ်သက်စာမျက်နှာကို တင်လို့မရဘူး။ ပိတ်ပြီး ပြန်ဖွင့်ပါ။"</string>

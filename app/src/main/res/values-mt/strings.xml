@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lista tat-Tagħbija tal-Applikazzjonijiet - Stenna sakemm jogħġbok stenna"</string>
 	<string name="clear_cache_success">"Jekk jogħġbok agħlaq l-applikazzjoni tradotta! Ittraduċi Cache għal din l-applikazzjoni se titħassar il-ħin li jmiss l-applikazzjoni tibda!!"</string>
 	<string name="wut_why_null">"Ma setax jillowdja l-paġna tal-preferenza per-app. Erġa&apos; erġa&apos; open application."</string>

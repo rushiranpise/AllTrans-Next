@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 
 import android.annotation.SuppressLint;
@@ -136,7 +136,7 @@ public class alltrans implements IXposedHookLoadPackage {
                             XposedHelpers.callStaticMethod(Binder.class, "allowBlockingForCurrentThread");
 
                             XposedBridge.log("AllTrans: Old URI " + uri.toString());
-                            String new_uri_string = uri.toString().replace("content://settings/system/alltransProxyProviderURI/", "content://akhil.alltrans.");
+                            String new_uri_string = uri.toString().replace("content://settings/system/alltransProxyProviderURI/", "content://akhil.alltrans.next.");
                             /* Vouch for the real caller: the provider rejects
                                plain system_server calls, since any app could
                                otherwise use this proxy to read the settings. */
@@ -225,7 +225,7 @@ public class alltrans implements IXposedHookLoadPackage {
 
                             XposedHelpers.callStaticMethod(Binder.class, "allowBlockingForCurrentThread");
                             String callerPkg = utils.resolvePackageForUid(context, callerUid, packageName);
-                            Uri newUri = Uri.parse("content://akhil.alltrans.sharedPrefProvider/" + packageName
+                            Uri newUri = Uri.parse("content://akhil.alltrans.next.sharedPrefProvider/" + packageName
                                     + (callerPkg != null ? "?" + utils.CALLER_PARAM + "=" + Uri.encode(callerPkg) : ""));
                             Cursor cursor = context.getContentResolver().query(newUri, null, null, null, null);
                             if (cursor == null || !cursor.moveToFirst()) {
@@ -292,7 +292,7 @@ public class alltrans implements IXposedHookLoadPackage {
                             String callerPkg = utils.resolvePackageForUid(context, callerUid, null);
                             Uri uri = new Uri.Builder()
                                     .scheme("content")
-                                    .authority("akhil.alltrans.gtransProvider")
+                                    .authority("akhil.alltrans.next.gtransProvider")
                                     .appendQueryParameter(utils.CALLER_PARAM, callerPkg == null ? "" : callerPkg)
                                     .appendQueryParameter("from", fromLanguage)
                                     .appendQueryParameter("to", toLanguage)

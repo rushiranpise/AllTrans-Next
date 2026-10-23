@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Alltrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Liste de chargement des applications - Veuillez attendre"</string>
 	<string name="clear_cache_success">"S’il vous plaît forcer la fermeture de l’application traduite! Traduire Cache pour cette application sera effacé la prochaine fois que l’application démarre!"</string>
 	<string name="wut_why_null">"Impossible de charger la page de préférence par application. Fermer et rouvrir l’application à nouveau."</string>

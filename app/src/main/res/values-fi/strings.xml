@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Kävi koulua AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Sovellusten luettelon lataaminen - Odota"</string>
 	<string name="clear_cache_success">"Ole hyvä ja pakota suljettu käännetty sovellus! Käännä välimuisti tämän sovelluksen poistetaan seuraavan kerran sovellus alkaa!"</string>
 	<string name="wut_why_null">"Sovelluksen asetussivua ei voitu ladata. Sulje sovellus ja avaa se uudelleen."</string>

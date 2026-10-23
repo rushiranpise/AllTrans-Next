@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.app.NotificationManager;
 import android.content.Context;
@@ -53,7 +53,7 @@ import static de.robv.android.xposed.XposedHelpers.findAndHookConstructor;
 
 class AttachBaseContextHookHandler extends XC_MethodHook {
 
-    private static final String MODULE_PACKAGE = "akhil.alltrans";
+    private static final String MODULE_PACKAGE = "akhil.alltrans.next";
     private static final String GLOBAL_PREF_FILE = "AllTransPref";
     private static final String SETTINGS_PROXY_CALL_URI = "content://settings/system";
     private static final String SETTINGS_PROXY_CALL_METHOD = "alltransProxyProviderURI";
@@ -62,9 +62,9 @@ class AttachBaseContextHookHandler extends XC_MethodHook {
     private static final String SETTINGS_PROXY_BUNDLE_LOCAL = "alltrans_local_pref";
 
     private static Cursor queryPreferencesCursor(Context context, String packageName) {
-        Uri directUri = Uri.parse("content://akhil.alltrans.sharedPrefProvider/" + packageName);
+        Uri directUri = Uri.parse("content://akhil.alltrans.next.sharedPrefProvider/" + packageName);
         Uri proxyUri = Uri.parse(directUri.toString()
-                .replace("content://akhil.alltrans.", "content://settings/system/alltransProxyProviderURI/"));
+                .replace("content://akhil.alltrans.next.", "content://settings/system/alltransProxyProviderURI/"));
         Cursor cursor = queryCursorSafely(context, proxyUri, "settings proxy");
         if (cursor != null) {
             return cursor;

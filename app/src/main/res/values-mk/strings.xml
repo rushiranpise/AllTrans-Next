@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Loading List of Applications - Ве молам почекајте"</string>
 	<string name="clear_cache_success">"Ве молам затворете ја преведуваната апликација! Translate Cache за оваа апликација ќе биде избришана следниот пат кога ќе започне апликацијата!!"</string>
 	<string name="wut_why_null">"Не можевме да ја наполниме страницата за преференција на апликацијата. Затворете ја и повторно отворете ја апликацијата повторно."</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Alltrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Resminamalaryň ýüklenilen sanawy - Haýyş nam-nygtap geliň"</string>
 	<string name="clear_cache_success">"Terjime edilen programmany zor bilen ýapmagyňyzy haýyş edýäris! Bu programma üçin Cache translate indiki programma başlanda öçüriler!!"</string>
 	<string name="wut_why_null">"Per-app preferensiýa sahypasy gaýd edip bilmedi: %s Ýene-de bir anketa ýap we ýene aç."</string>

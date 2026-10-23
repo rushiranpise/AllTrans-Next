@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Қосымшалардың тізімін жүктеу - Күте тұрыңыз"</string>
 	<string name="clear_cache_success">"Аударылған бағдарламаны күшпен жауып беріңіз! Осы бағдарламаүшін кэшті аудару келесі жолы бағдарлама іске қосылады!!"</string>
 	<string name="wut_why_null">"Per-app теңшелім беті жүктелмеді. Қолданбаны қайтадан жауып, қайта ашу."</string>

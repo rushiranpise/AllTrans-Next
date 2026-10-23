@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Тиркемелерди жүктөө тизмеси - Күткүлө"</string>
 	<string name="clear_cache_success">"Которулган тиркемени күч менен жабуу суранабыз! Бул тиркеме үчүн Кэш которуу кийинки жолу тиркеме башталганда өчүрүлөт !!"</string>
 	<string name="wut_why_null">"Пер-тиркеменин артыкчылык баракчасын жүктөп алууга болбоду. Арызды кайра жабуу жана кайра ачуу."</string>

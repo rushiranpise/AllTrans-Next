@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (alla)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lasta lista över program - Vänta"</string>
 	<string name="clear_cache_success">"Vänligen tvinga stänga den översatta appen! Översätt cache för denna app kommer att raderas nästa gång appen startar!"</string>
 	<string name="wut_why_null">"Det gick inte att läsa in inställningssidan per app. Stäng och öppna programmet igen."</string>

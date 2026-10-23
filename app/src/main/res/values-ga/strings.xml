@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Liosta Na nIarratais á Luchtú - Fan le do thoil"</string>
 	<string name="clear_cache_success">"Cuir an feidhmchlár aistrithe i bhfeidhm! Scriosfar Taisce Aistrithe don fheidhmchlár seo an chéad uair eile a thosaíonn an feidhmchlár!!"</string>
 	<string name="wut_why_null">"Níorbh fhéidir an leathanach tosaíochta Per-app a luchtú. &apos;Dún agus ath-oscailt iarratas arís."</string>

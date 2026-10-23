@@ -17,29 +17,19 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
-import android.content.Context;
-import android.util.AttributeSet;
+import android.webkit.WebViewClient;
 
-import androidx.preference.EditTextPreference;
+import de.robv.android.xposed.XC_MethodHook;
 
-/**
- * EditTextPreference whose dialog is a Material 3 dialog. Overriding onClick()
- * replaces the framework dialog instead of opening it alongside.
- */
-public class MaterialEditTextPreference extends EditTextPreference {
 
-    public MaterialEditTextPreference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public MaterialEditTextPreference(Context context) {
-        super(context);
-    }
+public class WebViewSetClientHookHandler extends XC_MethodHook {
 
     @Override
-    protected void onClick() {
-        MaterialPreferenceDialogs.showEditText(this);
+    protected void beforeHookedMethod(MethodHookParam methodHookParam) {
+        utils.debugLog("we are setting WebViewClient!");
+        WebViewClient ori = (WebViewClient) methodHookParam.args[0];
+        methodHookParam.args[0] = new WebViewClientWrapper(ori);
     }
 }

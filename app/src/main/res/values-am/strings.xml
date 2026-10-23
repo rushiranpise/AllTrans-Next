@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"መተግበሪያዎች ዝርዝር መጫን - እባክዎ ይጠብቁ"</string>
 	<string name="clear_cache_success">"እባክዎ ኃይል-የተተረጎመውን መተግበሪያ መዝጋት! ለዚህ መተግበሪያ ካቺን ተርጉሙ በሚቀጥለው ጊዜ መተግበሪያው ሲጀመር ይሽራል!!"</string>
 	<string name="wut_why_null">"የፐር-አፕ ምርጫ ገጹን መጫን አልተቻለም። እንደገና መተግበሪያውን ዝጋ እና እንደገና ይከፈት."</string>

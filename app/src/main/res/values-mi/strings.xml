@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Kei te uta Rārangi Taupānga-Tatari Koa"</string>
 	<string name="clear_cache_success">"Me kati koa te taupānga i whakamāoritia! Mā te whakawhiti i te Keteroki mō tēnei taupānga ka mukua te wā ka tīmata anō te taupānga!!"</string>
 	<string name="wut_why_null">"Kāore i taea te uta i te whārangi manakohanga o Ia taupānga. Katia, ā, ka tūwhera anō i te taupānga."</string>

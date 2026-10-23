@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Hammatrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Dasturlar ro&apos;yxati yuklanmoqda - Iltimos kutib turing"</string>
 	<string name="clear_cache_success">"Iltimos, tarjima qilingan ilovani majburlab yoping! Ushbu ilova uchun Cacheni tarjima qiling keyingi safar ilova ishga tushganda o&apos;chiriladi!!"</string>
 	<string name="wut_why_null">"Dasturning ustunlar sahifasini yuklab boʻlmadi. Dasturni qayta yopish va qayta ochish."</string>

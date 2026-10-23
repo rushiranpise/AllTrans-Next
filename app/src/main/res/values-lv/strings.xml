@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Notiek lietojumprogrammu saraksta ielāde - lūdzu, uzgaidiet"</string>
 	<string name="clear_cache_success">"Lūdzu, izslēdziet tulkoto lietotni! Translate Cache par šo app tiks izdzēsti nākamreiz app sākas!"</string>
 	<string name="wut_why_null">"Nevarēja ielādēt lapu Katras lietotnes preference. Aizveriet un vēlreiz atveriet lietojumprogrammu."</string>

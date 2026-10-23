@@ -21,7 +21,7 @@
     <integer name="default_delay">0</integer>
     <integer name="default_delay_webview">500</integer>
 
-    <string name="app_name">"AllTrans"</string>
+    <string name="app_name">"AllTrans Next"</string>
 
     <!-- Appearance -->
     <string name="appearance">"Appearance"</string>

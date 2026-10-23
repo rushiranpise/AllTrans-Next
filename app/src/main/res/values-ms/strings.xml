@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Memuatkan senarai aplikasi-Sila tunggu"</string>
 	<string name="clear_cache_success">"Sila paksa-tutup aplikasi yang diterjemahkan! Terjemahkan cache untuk aplikasi ini akan dipadamkan pada masa akan datang aplikasi bermula!!"</string>
 	<string name="wut_why_null">"Tidak dapat memuatkan halaman keutamaan bagi setiap apl. Tutup dan buka semula aplikasi semula."</string>

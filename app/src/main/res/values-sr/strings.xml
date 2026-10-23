@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"АллТранс"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Учитавање листе апликација-Сачекајте"</string>
 	<string name="clear_cache_success">"-Затворите преведену апликацију! Превођење кеша за ову апликацију ће бити избрисано следећи пут када се покрене апликација!!"</string>
 	<string name="wut_why_null">"Није могуће учитати страницу за жељену апликацију по апликацији. Поново затворите и поново отворите апликацију."</string>

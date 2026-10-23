@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"در حال بارگذاری لیست برنامه های کاربردی-لطفا صبر کنید"</string>
 	<string name="clear_cache_success">"لطفا برنامه ترجمه شده را مجبور به بستن کنید! ترجمه کش برای این برنامه دفعه بعد که برنامه شروع می شود پاک خواهد شد!!"</string>
 	<string name="wut_why_null">"نتوانست صفحه اولویت هر برنامه را بارگیری کند. دوباره برنامه را ببندید و دوباره باز کنید."</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ఆల్ ట్రాన్స్"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"అప్లికేషన్ ల జాబితా లోడింగ్ - దయచేసి వేచి ఉండండి"</string>
 	<string name="clear_cache_success">"దయచేసి అనువదించబడ్డ యాప్ ని బలవంతంగా క్లోజ్ చేయండి! ఈ యాప్ కొరకు ట్రాన్స్ లేట్ కాష్ తరువాత సారి యాప్ ప్రారంభం అవుతుంది!!"</string>
 	<string name="wut_why_null">"పర్-యాప్ ప్రాధాన్యత పేజీని లోడ్ చేయడం సాధ్యం కాలేదు. అప్లికేషన్ ని మళ్లీ క్లోజ్ చేసి, మళ్లీ ఓపెన్ చేయండి."</string>

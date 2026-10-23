@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"सर्वट्रान्स"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"अनुप्रयोगांची यादी दाखल करा - कृपया थांबा"</string>
 	<string name="clear_cache_success">"कृपया भाषांतरित अॅप बंद करा! या अॅपसाठी भाषांतर कॅशे पुढील वेळी पुसले जाईल जेव्हा अॅप सुरू होईल तेव्हा!!"</string>
 	<string name="wut_why_null">"प्रति-अॅप प्राधान्य पान दाखल करू शकत नाही. अनुप्रयोग पुन्हा बंद करा आणि पुन्हा उघडा."</string>

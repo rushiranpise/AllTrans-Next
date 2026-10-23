@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

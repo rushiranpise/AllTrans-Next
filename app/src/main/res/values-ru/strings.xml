@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Загрузка Список приложений - Пожалуйста, подождите"</string>
 	<string name="clear_cache_success">"Пожалуйста, принудительно-закрыть переведенное приложение! Перевод Кэш для этого приложения будет стерт в следующий раз, когда приложение начинается!"</string>
 	<string name="wut_why_null">"Не уму отсутствуют настройки страницы per-app. Закройте и снова откройте приложение."</string>

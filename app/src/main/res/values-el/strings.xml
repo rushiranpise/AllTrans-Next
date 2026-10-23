@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Όλα τα μεταφράσεις"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Φόρτωση λίστας εφαρμογών - Περιμένετε"</string>
 	<string name="clear_cache_success">"Παρακαλώ δύναμη-κλείστε το μεταφρασμένο app! Μετάφραση Cache για αυτό το app θα διαγραφούν την επόμενη φορά που ξεκινά η εφαρμογή!"</string>
 	<string name="wut_why_null">"Δεν ήταν δυνατή η φόρτωση της σελίδας προτιμήσεων ανά εφαρμογή. Κλείστε και ανοίξτε ξανά την εφαρμογή."</string>

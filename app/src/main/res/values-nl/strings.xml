@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Laadlijst met aanvragen - Wacht even"</string>
 	<string name="clear_cache_success">"Sluit de vertaalde app! Vertaal Cache voor deze app zal worden gewist de volgende keer dat de app begint!"</string>
 	<string name="wut_why_null">"Kan de voorkeurspagina per app niet laden. Sluit en open de toepassing opnieuw."</string>

@@ -1,5 +1,11 @@
 <!-- omit in toc -->
-# ![AllTrans](https://raw.githubusercontent.com/akhilkedia/AllTrans/master/app/src/main/res/mipmap-hdpi/ic_launcher.png)AllTrans™ - Completely Translate Apps
+# ![AllTrans Next](https://raw.githubusercontent.com/akhilkedia/AllTrans/master/app/src/main/res/mipmap-hdpi/ic_launcher.png)AllTrans Next - Completely Translate Apps
+
+> **AllTrans Next** is the successor of the original **AllTrans** Xposed module created by
+> [Akhil Kedia](https://github.com/akhilkedia). It is a separate project with a new package name
+> (`akhil.alltrans.next`) and a Material 3 UI, so it can be installed side-by-side with the
+> original AllTrans. This repository is maintained by
+> [@rushiranpise](https://github.com/rushiranpise).
 
 Like Chrome's translation of webpages, but for Android apps. It replaces **ALL TEXT IN AN APP** from one language to another at runtime.
 
@@ -9,9 +15,9 @@ This is something similar to the way Google Translate works in Chrome.
 
 Works with Android 13!
 
-[![LicenseGPLv3](https://img.shields.io/badge/License-GPL%20v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY6TVJXST724J) ![GitHub All Releases](https://img.shields.io/github/downloads/akhilkedia/AllTrans/total?style=social) [![Play](https://img.shields.io/endpoint?color=green&logo=google-play&logoColor=green&url=https%3A%2F%2Fplayshields.herokuapp.com%2Fplay%3Fi%3Dakhil.alltrans%26l%3DInstalls%26m%3D%24installs)](https://play.google.com/store/apps/details?id=akhil.alltrans)
+[![LicenseGPLv3](https://img.shields.io/badge/License-GPL%20v3-green.svg)](http://www.gnu.org/licenses/gpl-3.0) ![GitHub All Releases](https://img.shields.io/github/downloads/rushiranpise/AllTrans-Next/total?style=social)
 
-Download the latest release from github releases or from LSPosed modules!
+Download the latest release from the [GitHub releases](https://github.com/rushiranpise/AllTrans-Next/releases) page or from LSPosed modules!
 <!-- [![Get it on Google Play](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)](https://play.google.com/store/apps/details?id=akhil.alltrans&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1) -->
 
 ## Table of Contents
@@ -22,7 +28,7 @@ Download the latest release from github releases or from LSPosed modules!
   - [Below are some screenshots of AllTrans translating apps from Korean to English](#below-are-some-screenshots-of-alltrans-translating-apps-from-korean-to-english)
   - [Below are some of the screenshots of AllTrans app](#below-are-some-of-the-screenshots-of-alltrans-app)
   - [Videos](#videos)
-- [How to install AllTrans](#how-to-install-alltrans)
+- [How to install AllTrans Next](#how-to-install-alltrans-next)
 - [How to use AllTrans](#how-to-use-alltrans)
   - [Note - If you are using VirtualXposed or Taichi](#note---if-you-are-using-virtualxposed-or-taichi)
 - [How to get Microsoft Azure Translate Key](#how-to-get-microsoft-azure-translate-key)
@@ -75,14 +81,14 @@ A video (in English) showing how to use AllTrans by Gadget Hacks on Youtube [htt
 
 [![Alt text](https://img.youtube.com/vi/sKDtkmISi6k/0.jpg)](https://www.youtube.com/watch?v=sKDtkmISi6k)
 
-## How to install AllTrans
+## How to install AllTrans Next
 
 1. This application requires android version 4.4 or later. You probably already have it. (Android KitKat or later - so far Kitkat, Lollipop, MarshMallow, Nougat, Oreo, Pie, Q, R.).
 1. Make sure you have [Xposed Framework](https://forum.xda-developers.com/showthread.php?t=3034811) installed and running.
    - [LSPosed](https://github.com/LSPosed/LSPosed) and [EdXposed](https://forum.xda-developers.com/xposed/development/official-edxposed-successor-xposed-t4070199) are recommended.
    - **If you do not have an unlocked bootloader or Magisk, AllTrans is now fully compatible with [VirtualXposed](https://virtualxposed.com/) and [Taichi](https://github.com/taichi-framework/TaiChi/releases), so AllTrans can now be used on all devices!!! No need of unlocked bootloader, no need of Magisk, etc.!**
-1. Install the latest version of AllTrans from [Google Play Store](https://play.google.com/store/apps/details?id=akhil.alltrans). You can alternatively download the apk from [Xposed Module Repository](http://repo.xposed.info/module/akhil.alltrans) or from LSPosed Repository inside LSPosed app.
-1. Reboot your phone.
+1. Download the latest APK from the [GitHub releases](https://github.com/rushiranpise/AllTrans-Next/releases) page and install it. AllTrans Next uses the package `akhil.alltrans.next`, so it can be installed alongside the original AllTrans.
+1. Enable the **AllTrans Next** module in LSPosed (it is a new module entry, separate from the original AllTrans), scope it to the apps you want to translate and reboot your phone.
 
 ## How to use AllTrans
 
@@ -177,7 +183,7 @@ Contact me for support. When you do, I will need atleast the following informati
 1. A "logcat" of you trying to open the app which gives you problems. You can use apps freely available on the Play Store for this, such as [This one](https://play.google.com/store/apps/details?id=com.nolanlawson.logcat)
 
 Once you have the above, contact me on the  [XDA support thread](https://forum.xda-developers.com/xposed/modules/xposed-alltrans-completely-translate-t3539878).
-You can also report issues on the  [Project's "Github"](https://github.com/akhilkedia/AllTrans).
+You can also report issues on the [project's GitHub](https://github.com/rushiranpise/AllTrans-Next/issues).
 
 ## Featured In
 

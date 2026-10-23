@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -189,7 +189,7 @@ class ToastHookHandler extends XC_MethodHook {
             }
             Uri uri = new Uri.Builder()
                     .scheme("content")
-                    .authority("akhil.alltrans.gtransProvider")
+                    .authority("akhil.alltrans.next.gtransProvider")
                     .appendQueryParameter("from", fromLanguage)
                     .appendQueryParameter("to", toLanguage)
                     .appendQueryParameter("text", sourceText)

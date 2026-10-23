@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ऑलट्रांस"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"आवेदनों की लोडिंग सूची - कृपया प्रतीक्षा करें"</string>
 	<string name="clear_cache_success">"कृपया अनुवादित ऐप को बल-बंद करें! इस ऐप के लिए कैश का अनुवाद अगली बार ऐप शुरू होने पर मिट जाएगा!!"</string>
 	<string name="wut_why_null">"प्रति-ऐप वरीयता पृष्ठ लोड नहीं कर सका। फिर से आवेदन बंद करें और फिर से खोलें।"</string>

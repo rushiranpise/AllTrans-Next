@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Liste der Anwendungen laden - Bitte warten"</string>
 	<string name="clear_cache_success">"Bitte schließen Sie die übersetzte App! Übersetzen Cache für diese App wird das nächste Mal gelöscht werden, wenn die App startet!!"</string>
 	<string name="wut_why_null">"Die Pro-App-Einstellungsseite konnte nicht geladen werden. Schließen Sie die Anwendung erneut, und öffnen Sie sie erneut."</string>

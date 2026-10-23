@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lis Loading nan aplikasyon pou-Tanpri tann"</string>
 	<string name="clear_cache_success">"Tanpri fose-femen app a tradui! Tradwi kachet pou app sa a pral efasman pwochen fwa app a komanse!!"</string>
 	<string name="wut_why_null">"Pa t &apos; kapab chaje paj la chak-app preferans. Femen ak re-louvri aplikasyon anko."</string>

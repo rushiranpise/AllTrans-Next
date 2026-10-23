@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Memuat daftar aplikasi-harap tunggu"</string>
 	<string name="clear_cache_success">"Silakan memaksa-menutup aplikasi diterjemahkan! Terjemahkan cache untuk aplikasi ini akan terhapus waktu berikutnya aplikasi dimulai!!"</string>
 	<string name="wut_why_null">"Tidak dapat memuat halaman preferensi per aplikasi. Tutup dan buka kembali aplikasi lagi."</string>

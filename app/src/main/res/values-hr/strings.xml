@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (prijenos)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Učitavanje popisa aplikacija - Pričekajte"</string>
 	<string name="clear_cache_success">"Molimo vas da prisilno zatvorite prevedenu aplikaciju! Prevedi Cache za ovu aplikaciju će biti izbrisani sljedeći put kada aplikacija počne!!"</string>
 	<string name="wut_why_null">"Nije moguće učitati stranicu postavki po aplikaciji. Ponovno zatvorite i ponovno otvorite aplikaciju."</string>

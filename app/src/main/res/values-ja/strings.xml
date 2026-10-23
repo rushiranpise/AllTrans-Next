@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"オールトランス"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"アプリケーションの一覧を読み込んでいます - お待ちください"</string>
 	<string name="clear_cache_success">"翻訳アプリを強制終了してください!このアプリの翻訳キャッシュは、アプリが起動すると、次回消去されます!"</string>
 	<string name="wut_why_null">"アプリごとの設定ページを読み込めませんでした。アプリケーションを閉じてから、もう一度開きます。"</string>

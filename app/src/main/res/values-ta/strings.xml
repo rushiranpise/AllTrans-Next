@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"அனைத்துட்ரான்ஸ்"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"பயன்பாடுகள் பட்டியல் ஏற்றுதல் - காத்திருக்கவும்"</string>
 	<string name="clear_cache_success">"தயவுசெய்து மொழிபெயர்க்கப்பட்ட பயன்பாட்டை வலுக்கட்டாயமாக மூடவும்! இந்த பயன்பாட்டிற்கான கேச் மொழிபெயர்க்க வும் அடுத்த முறை பயன்பாடு தொடங்கும் போது அது வும் இருக்கும்!!"</string>
 	<string name="wut_why_null">"Per-app விருப்பத்தேர்வு பக்கத்தை நினைவேற்ற முடியவில்லை. பயன்பாட்டை மீண்டும் மூடிமீண்டும் திறக்கவும்."</string>

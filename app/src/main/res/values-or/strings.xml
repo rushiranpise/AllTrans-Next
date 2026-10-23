@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ସମସ୍ତ ଟ୍ରାନ୍ସ"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"ପ୍ରୟୋଗଗୁଡ଼ିକର ତାଲିକା ଧାରଣ କରୁଅଛି - ଦୟାକରି ଅପେକ୍ଷା କରନ୍ତୁ"</string>
 	<string name="clear_cache_success">"ଦୟାକରି ଅନୁବାଦିତ ଆପ୍ କୁ ବାଧ୍ୟ କରନ୍ତୁ! ଏହି ଆପ୍ ପାଇଁ କ୍ୟାଚ୍ ଅନୁବାଦ ପରବର୍ତ୍ତୀ ସମୟରେ ଆପ୍ ଆରମ୍ଭ ହେବା ପରେ ବିଲୋପ ହେବ !!"</string>
 	<string name="wut_why_null">"ପ୍ରତି-ଆପ୍ ପସନ୍ଦ ପୃଷ୍ଠା କୁ ଧାରଣ କରିପାରିଲା ନାହିଁ | ପ୍ରୟୋଗକୁ ପୁନର୍ବାର ବନ୍ଦ କରନ୍ତୁ ଏବଂ ପୁନଃ ଖୋଲନ୍ତୁ |"</string>

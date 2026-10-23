@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ཡོངས་རྫོགས་ཀྱི་གོ་རིམ།"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"རེ་འདུན་ཞུ་ཡིག་གི་མིང་ཐོ་འདོན་རོགས། སྒུག་རོགས།"</string>
 	<string name="clear_cache_success">"བཙན་གྱིས་ལོ་ཙཱ་བྱས་པའི་ཉེར་སྤྱོད་གོ་རིམ་ལ་ཤུགས་རྒྱག་རོགས། ཐེངས་རྗེས་མར་ཉེར་སྤྱོད་གོ་རིམ་འདི་ལ་ལོ་ཙཱ་བྱས་ན་ད་དུང་བསུབ་རྒྱུ་རེད།"</string>
 	<string name="wut_why_null">"ཕེ་རུའི་ཕྱོགས་ཞེན་གྱི་ཤོག་ལྷེ་ནང་དུ་འཇུག་མི་ཐུབ། ཡང་བསྐྱར་སྒོ་རྒྱག་པ་དང་བསྐྱར་དུ་རེ་ཞུ་བྱེད་པ།"</string>

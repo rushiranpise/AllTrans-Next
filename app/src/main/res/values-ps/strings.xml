@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"د غوښتنلیکونو د بارولو لیست - مهربانی وکړئ صبر وکړئ"</string>
 	<string name="clear_cache_success">"مهربانی وکړئ د ژباړل شوی اپ بندکړئ! د دې اپ لپاره د Cache ژباړه به بل ځل له منځه لاړ شی چې دا اپلیکېټ پیل شی!"</string>
 	<string name="wut_why_null">"د پر اپ د ترجیح پاڼه نه شی بار کولی. بیا وتړه او بیا یې خلاصه کړه."</string>

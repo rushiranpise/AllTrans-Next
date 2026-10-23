@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"V redu."</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Nalaganje seznam prijav-prosim počakaj"</string>
 	<string name="clear_cache_success">"Prosim sila-blizu prevedeno app! Translate cache za to aplikacijo bodo izbrisani naslednjič, ko se začne app!"</string>
 	<string name="wut_why_null">"Strani s preferenco po aplikaciji ni bilo mogoče naložiti. Znova zaprite in ponovno odprite aplikacijo."</string>

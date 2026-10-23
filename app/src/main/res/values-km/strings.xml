@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lîsteya Serlêdanan Bar bike - Ji kerema xwe li bendê bimîne"</string>
 	<string name="clear_cache_success">"Ji kerema xwe re bi zorê kapasîteya wergerandinê bigire! Wergerandina Pêşbirkê ji bo vê appê dê were jêbirin dema bê ku pêkirin dest pê bike!"</string>
 	<string name="wut_why_null">"Nikare rûpela tercîha Per-app bar bike. Serîlêdanê careke din bigire û dîsa veke."</string>

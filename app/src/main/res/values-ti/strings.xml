@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ኵሉ ትራንስ"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"ዝርዝር መመልከቲ ወረቐት ጽዓን - በጃኹም ተጸበዩ"</string>
 	<string name="clear_cache_success">"በጃኻ ነቲ እተተርጐመ ኣፕሊኬሽን ብሓይሊ ዓጽዎ! ኣብ ዚቕጽል እዋን እቲ ኣፕሊኬሽን ኪጅምር ከሎ ካቸ ናብዚ ኣፕሊኬሽን እዚ ኺድምሰስ እዩ!"</string>
 	<string name="wut_why_null">"ነቲ ናይ ፐር-ኣፕ ምርጫ ገጽ ኪጽዕኖ ኣይከኣለን። ኣወዓዕላኡ እንደገና ዓጽዩ ኸም ብሓድሽ ተኸፍተሉ።"</string>

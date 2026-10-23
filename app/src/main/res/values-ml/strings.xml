@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"എല്ലാ ട്രാൻസ്"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"അപേക്ഷകളുടെ പട്ടിക ലഭ്യമാക്കുന്നു - ദയവായി കാത്തിരിക്കുക"</string>
 	<string name="clear_cache_success">"പരിഭാഷപ്പെടുത്തിയ ആപ്പ് ബലമായി അടയ്ക്കുക! ഈ ആപ്പിനായുള്ള ട്രാൻസ്ലേറ്റ് കാഷ് അടുത്ത തവണ ആപ്പ് ആരംഭിക്കുമ്പോൾ മായ്ക്കപ്പെടും!!"</string>
 	<string name="wut_why_null">"Per-app മുൻഗണന പേജ് ലോഡ് ചെയ്യാൻ കഴിഞ്ഞില്ല. വീണ്ടും ആപ്ലിക്കേഷൻ അടയ്ക്കുക, വീണ്ടും തുറക്കുക."</string>

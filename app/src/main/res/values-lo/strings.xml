@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Loading List of Applications - Please Wait"</string>
 	<string name="clear_cache_success">"ກະລຸນາບັງຄັບ-ປິດແອັບທີ່ແປແລ້ວ! Translate Cache ສໍາລັບແອັບນີ້ຈະຖືກລົບໃນຄັ້ງຕໍ່ໄປapp ເລີ່ມຕົ້ນ!!"</string>
 	<string name="wut_why_null">"ບໍ່ສາມາດໂຫຼດຫນ້າການເລືອກ Per-app ໄດ້. ປິດແລະເປີດການນໍາໃຊ້ໃຫມ່ອີກເທື່ອຫນຶ່ງ."</string>

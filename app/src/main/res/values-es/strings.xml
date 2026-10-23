@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Lista de carga de aplicaciones - Espere"</string>
 	<string name="clear_cache_success">"Por favor, forzar-cerrar la aplicación traducida! Traducir caché para esta aplicación se borrará la próxima vez que se inicia la aplicación !!"</string>
 	<string name="wut_why_null">"No se pudo cargar la página de preferencias por aplicación. Cierre y vuelva a abrir la aplicación."</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (AllTrans)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Ładowanie listy aplikacji - Proszę czekać"</string>
 	<string name="clear_cache_success">"Proszę wymusić zamknięcie przetłumaczonej aplikacji! Przetłumacz cache dla tej aplikacji zostaną usunięte następnym razem, gdy aplikacja uruchamia!"</string>
 	<string name="wut_why_null">"Nie można załadować strony preferencji Dla aplikacji. Zamknij i ponownie otwórz aplikację ponownie."</string>

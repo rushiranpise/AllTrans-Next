@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Llwytho rhestr o geisiadau-Arhoswch"</string>
 	<string name="clear_cache_success">"Dylech orfodi-cau&apos;r app a gyfieithwyd! Caiff CACHE cyfieithu ar gyfer yr app hwn ei ddileu y tro nesaf y bydd yr ap yn dechrau!!"</string>
 	<string name="wut_why_null">"Doedd dim modd llwytho&apos;r dudalen dewis fesul app. Cau&apos;r rhaglen a&apos;i hail-agor eto."</string>

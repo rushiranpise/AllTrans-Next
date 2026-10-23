@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ਸਭਟਰਾਂਸ"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"ਐਪਲੀਕੇਸ਼ਨਾਂ ਦੀ ਲਿਸਟ ਲੋਡ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ - ਉਡੀਕ ਕਰੋ"</string>
 	<string name="clear_cache_success">"ਕਿਰਪਾ ਕਰਕੇ ਅਨੁਵਾਦ ਕੀਤੀ ਐਪ ਨੂੰ ਜ਼ਬਰਦਸਤੀ ਬੰਦ ਕਰੋ! ਇਸ ਐਪ ਲਈ ਅਨੁਵਾਦ ਕੈਸ਼ ਨੂੰ ਅਗਲੀ ਵਾਰ ਮਿਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ ਜਦੋਂ ਐਪ ਸ਼ੁਰੂ ਹੋ ਜਾਵੇਗੀ!!"</string>
 	<string name="wut_why_null">"ਪਰ-ਐਪ ਤਰਜੀਹੀ ਪੰਨਾ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਐਪਲੀਕੇਸ਼ਨ ਨੂੰ ਦੁਬਾਰਾ ਬੰਦ ਕਰੋ ਅਤੇ ਮੁੜ-ਖੋਲ੍ਹੋ।"</string>

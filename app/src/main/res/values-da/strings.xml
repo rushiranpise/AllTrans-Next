@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (AllTrans)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Indlæser liste over programmer - Vent venligst"</string>
 	<string name="clear_cache_success">"Venligst kraft-lukke den oversatte app! Oversæt Cache for denne app vil blive slettet næste gang den app starter!"</string>
 	<string name="wut_why_null">"Siden Med præferencerne pr. app kunne den ikke indlæses. Luk og åbn programmet igen."</string>

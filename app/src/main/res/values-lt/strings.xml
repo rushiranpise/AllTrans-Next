@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans (ViskasTrans)"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Įkeliamas paraiškų sąrašas - Palaukite"</string>
 	<string name="clear_cache_success">"Prašome priversti uždaryti išverstą programą! Versti talpyklą šiai programai bus ištrinta kitą kartą paleidus programą!!"</string>
 	<string name="wut_why_null">"Nepavyko įkelti programos nuostatų puslapio. Uždarykite ir vėl atidarykite programą dar kartą."</string>

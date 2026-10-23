@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Transatik"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Müraciətlərin siyahısı yüklənir - Xahiş edirik gözləyin"</string>
 	<string name="clear_cache_success">"Tərcümə olunan proqramı zəhmət olmasa, zorla bağlayın! Bu proqram üçün Cache tərcümə növbəti dəfə proqram başlayan zaman silinəcək!!"</string>
 	<string name="wut_why_null">"Per-app seçim səhifəsi yüklənə bilmədi. Ərizəni yenidən bağlayın və yenidən açın."</string>

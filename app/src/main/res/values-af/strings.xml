@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Laai tans lys toepassings-wag asseblief"</string>
 	<string name="clear_cache_success">"Asseblief Force-maak die vertaalde app! Vertaal cache vir hierdie inligting sal gewis word volgende keer die app begin!!"</string>
 	<string name="wut_why_null">"Kon nie die per-program-voorkeurbladsy laai nie. Maak weer en weer oop aansoek."</string>

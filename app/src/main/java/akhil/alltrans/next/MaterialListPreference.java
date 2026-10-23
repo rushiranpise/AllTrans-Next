@@ -17,19 +17,29 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
-import android.webkit.WebViewClient;
+import android.content.Context;
+import android.util.AttributeSet;
 
-import de.robv.android.xposed.XC_MethodHook;
+import androidx.preference.ListPreference;
 
+/**
+ * ListPreference whose dialog is a Material 3 dialog. Overriding onClick()
+ * replaces the framework dialog instead of opening it alongside.
+ */
+public class MaterialListPreference extends ListPreference {
 
-public class WebViewSetClientHookHandler extends XC_MethodHook {
+    public MaterialListPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MaterialListPreference(Context context) {
+        super(context);
+    }
 
     @Override
-    protected void beforeHookedMethod(MethodHookParam methodHookParam) {
-        utils.debugLog("we are setting WebViewClient!");
-        WebViewClient ori = (WebViewClient) methodHookParam.args[0];
-        methodHookParam.args[0] = new WebViewClientWrapper(ori);
+    protected void onClick() {
+        MaterialPreferenceDialogs.showList(this);
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans között"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Az alkalmazások betöltési listája - Várjon"</string>
 	<string name="clear_cache_success">"Kérjük, hogy erőszak-zárja be a lefordított alkalmazást! Fordítás Cache erre app törlődik a következő alkalommal, amikor az alkalmazás elindul!"</string>
 	<string name="wut_why_null">"Nem lehetett betölteni az alkalmazásonkénti beállításlapot. Zárja be, majd nyissa meg újra az alkalmazást."</string>

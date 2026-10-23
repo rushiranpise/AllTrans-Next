@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;

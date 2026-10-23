@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Завантаження списку додатків-будь ласка, почекайте"</string>
 	<string name="clear_cache_success">"Будь ласка, примушуйте-закрити перекладену програму! Перекласти кеш для цієї програми буде стерто наступного разу додаток починається!"</string>
 	<string name="wut_why_null">"Не вдалося завантажити сторінку для налаштування на додаток. Закрийте та знову відкрийте програму."</string>

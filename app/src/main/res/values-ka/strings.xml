@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"პროგრამების ჩატვირთვა - გთხოვთ დაელოდოთ"</string>
 	<string name="clear_cache_success">"გთხოვთ, აიძულოთ დახუროთ თარგმნილი აპლიკაცია! თარგმნეთ Cache ამ აპლიკაციისთვის წაიშლება შემდეგ ჯერზე, როდესაც აპი იწყება !!"</string>
 	<string name="wut_why_null">"აპლიკაციის უპირატესობის გვერდის ჩატვირთვა ვერ განხორციელდა. კვლავ დახურეთ და ხელახლა გახსენით პროგრამა."</string>

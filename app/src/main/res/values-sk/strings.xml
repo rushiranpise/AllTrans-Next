@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Všetky trans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Načítanie zoznamu aplikácií - Počkajte, prosím,"</string>
 	<string name="clear_cache_success">"Prosím, sila-zatvorte preložené aplikácie! Preložiť Cache pre túto aplikáciu budú vymazané nabudúce aplikácia začína!"</string>
 	<string name="wut_why_null">"Stránka preferencie per-app sa nedá načítať. Znova zatvorte a znova otvorte aplikáciu."</string>

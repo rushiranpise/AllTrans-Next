@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ٹرانس"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"ایپلی کیشنز کی فہرست لوڈنگ-براہ مہربانی انتظار کریں"</string>
 	<string name="clear_cache_success">"براہ مہربانی مترجم کریں-ترجمہ ایپ! اس ایپ کے لیے کیسہ کا ترجمہ کریں اگلے وقت ایپ شروع ہو جائے گی!!"</string>
 	<string name="wut_why_null">"فی ایپ ترجیح صفحہ لوڈ نہیں کر سکا ۔ پھر دوبارہ دوبارہ کھولنے کی درخواست کریں ۔"</string>

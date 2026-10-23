@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Всички транса"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Зареждане на списък с приложения - Моля, изчакайте"</string>
 	<string name="clear_cache_success">"Моля, затворете принудително преведеното приложение! Превод Cache за това приложение ще бъде изтрит следващия път, когато приложението започва !!"</string>
 	<string name="wut_why_null">"Не можа да се зареди страницата за предпочитания за приложение. Затворете и отново отворете отново приложението."</string>

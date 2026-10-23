@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"सबै ट्रान्स्लेन"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"अनुप्रयोगसूची लोड गर्दैछ - कृपया प्रतिक्षा गर्नुहोस्"</string>
 	<string name="clear_cache_success">"कृपया अनुवाद गरिएको अनुप्रयोग जबरजस्ती बन्द गर्नुहोस्! यस अनुप्रयोगको लागि अनुवाद क्यास अर्को पटक अनुप्रयोग सुरु हुँदा मेटिनेछ!!"</string>
 	<string name="wut_why_null">"अनुप्रयोग प्राथमिकता पृष्ठ लोड गर्न सकेन । अनुप्रयोग पुन: खोल्नुहोस् र बन्द गर्नुहोस् ।"</string>

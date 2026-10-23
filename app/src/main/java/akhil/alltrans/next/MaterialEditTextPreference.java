@@ -17,9 +17,29 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
+import android.content.Context;
+import android.util.AttributeSet;
 
-public interface OriginalCallable {
-    void callOriginalMethod(final CharSequence translatedString, final Object userData);
+import androidx.preference.EditTextPreference;
+
+/**
+ * EditTextPreference whose dialog is a Material 3 dialog. Overriding onClick()
+ * replaces the framework dialog instead of opening it alongside.
+ */
+public class MaterialEditTextPreference extends EditTextPreference {
+
+    public MaterialEditTextPreference(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public MaterialEditTextPreference(Context context) {
+        super(context);
+    }
+
+    @Override
+    protected void onClick() {
+        MaterialPreferenceDialogs.showEditText(this);
+    }
 }

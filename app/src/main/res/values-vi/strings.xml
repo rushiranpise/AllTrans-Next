@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"Của AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Loading danh sách các ứng dụng-vui lòng chờ"</string>
 	<string name="clear_cache_success">"Hãy buộc-đóng ứng dụng dịch! Dịch cache cho ứng dụng này sẽ bị xóa lần tiếp theo các ứng dụng bắt đầu!!"</string>
 	<string name="wut_why_null">"Không thể tải trang tùy chọn theo ứng dụng. Đóng và mở lại ứng dụng một lần nữa."</string>

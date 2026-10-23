@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Upakiaji orodha ya maombi-Tafadhali subiri"</string>
 	<string name="clear_cache_success">"Tafadhali Lazimisha-Funga programu ya kutafsiriwa! Tafsiri cache ya programu hii itakuwa kufutwa wakati ujao programu kuanza!!"</string>
 	<string name="wut_why_null">"Haikuweza kupakia ukurasa wa mapendeleo ya kila programu. Funga na Fungua tena programu-tumizi tena."</string>

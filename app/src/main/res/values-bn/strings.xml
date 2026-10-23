@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"অলট্রান্স"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"অ্যাপ্লিকেশনের তালিকা লোড করা হচ্ছে - অনুগ্রহ করে অপেক্ষা করুন"</string>
 	<string name="clear_cache_success">"অনুগ্রহ করে অনূদিত অ্যাপটি জোর করে বন্ধ করুন! এই অ্যাপের জন্য ক্যাশ অনুবাদ পরবর্তী সময়ে মুছে ফেলা হবে!"</string>
 	<string name="wut_why_null">"পার-অ্যাপ অগ্রাধিকার পৃষ্ঠা লোড করা যায়নি। প্রয়োগণটি আবার বন্ধ করুন এবং পুনরায় খুলুন।"</string>

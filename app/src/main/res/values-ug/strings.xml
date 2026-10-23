@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"پروگرامما قاچىلاش تىزىملىكى - ساقلاپ تۇرۇڭ"</string>
 	<string name="clear_cache_success">"تەرجىمە قىلىنغان ئەپنى مەجبۇرى تاقاڭ! بۇ ئەپنىڭ Cache نى تەرجىمە قىلىش كېلەركى قېتىم ئەپ قوزغالسا ئۆچۈپ كېتىدۇ!!!"</string>
 	<string name="wut_why_null">"Per-app مايىللىق بېتىنى قاچىلىغىلى بولمىدى. پروگراممىنى قايتا يېپىپ قايتا ئاچىمىز."</string>

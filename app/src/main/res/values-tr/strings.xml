@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"Uygulama Listesi Yükleme - Lütfen Bekleyin"</string>
 	<string name="clear_cache_success">"Lütfen çevrilmiş uygulamayı zorla kapatın! Bu uygulama için Önbellek çevirin uygulama bir dahaki sefere silinir!"</string>
 	<string name="wut_why_null">"Uygulama başına tercih sayfasını yükleyemedi. Uygulamayı kapatıp yeniden açın."</string>

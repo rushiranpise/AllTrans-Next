@@ -17,7 +17,7 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -48,7 +48,7 @@ import okhttp3.ResponseBody;
 
 //class GetTranslateToken implements Callback {
 class GetTranslateToken {
-    private static final String MODULE_PACKAGE = "akhil.alltrans";
+    private static final String MODULE_PACKAGE = "akhil.alltrans.next";
     private static final String SETTINGS_PROXY_CALL_URI = "content://settings/system";
     private static final String SETTINGS_PROXY_CALL_METHOD_TRANSLATE = "alltransProxyTranslate";
     private static final String SETTINGS_PROXY_BUNDLE_FROM = "alltrans_from_lang";
@@ -127,7 +127,7 @@ class GetTranslateToken {
                 }
 
                 Uri uri = new Uri.Builder().scheme("content")
-                        .authority("akhil.alltrans.gtransProvider")
+                        .authority("akhil.alltrans.next.gtransProvider")
                         .appendQueryParameter("from", fromLanguage)
                         .appendQueryParameter("to", toLanguage)
                         .appendQueryParameter("text", getTranslate.stringToBeTrans).build();

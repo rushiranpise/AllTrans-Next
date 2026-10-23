@@ -42,7 +42,7 @@ android {
 //    buildToolsVersion '32.0.0'
 
     defaultConfig {
-        applicationId "akhil.alltrans"
+        applicationId "akhil.alltrans.next"
         minSdkVersion 21
         //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 35
@@ -66,7 +66,7 @@ android {
     buildFeatures {
         buildConfig true
     }
-    namespace 'akhil.alltrans'
+    namespace 'akhil.alltrans.next'
 }
 
 repositories {

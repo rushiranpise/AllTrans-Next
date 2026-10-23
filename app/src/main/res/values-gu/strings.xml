@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"AllTrans"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"કાર્યક્રમોની યાદી લાવી રહ્યા છીએ - કૃપા કરીને રાહ જુઓ"</string>
 	<string name="clear_cache_success">"મહેરબાની કરીને અનુવાદિત એપ્લિકેશનને જબરદસ્તી બંધ કરો! આ એપ્લિકેશન માટે અનુવાદ કેશ હવે પછી જ્યારે એપ્લિકેશન શરૂ થશે ત્યારે ભૂંસી નાખવામાં આવશે!!"</string>
 	<string name="wut_why_null">"પર-એપ્લિકેશન પસંદગી પાનું લોડ કરી શક્યા નહિં. કાર્યક્રમ ને ફરીથી બંધ કરો અને ફરીથી ખોલો."</string>

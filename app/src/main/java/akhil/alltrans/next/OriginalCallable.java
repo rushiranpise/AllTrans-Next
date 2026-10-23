@@ -17,29 +17,9 @@
  *
  */
 
-package akhil.alltrans;
+package akhil.alltrans.next;
 
-import android.content.Context;
-import android.util.AttributeSet;
 
-import androidx.preference.ListPreference;
-
-/**
- * ListPreference whose dialog is a Material 3 dialog. Overriding onClick()
- * replaces the framework dialog instead of opening it alongside.
- */
-public class MaterialListPreference extends ListPreference {
-
-    public MaterialListPreference(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public MaterialListPreference(Context context) {
-        super(context);
-    }
-
-    @Override
-    protected void onClick() {
-        MaterialPreferenceDialogs.showList(this);
-    }
+public interface OriginalCallable {
+    void callOriginalMethod(final CharSequence translatedString, final Object userData);
 }

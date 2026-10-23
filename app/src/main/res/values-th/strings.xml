@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">"ทั้งหมดทรานส"</string>
+	<string name="app_name">"AllTrans Next"</string>
 	<string name="loading">"โหลดรายการการใช้งาน -- กรุณารอสักครู่"</string>
 	<string name="clear_cache_success">"กรุณาบังคับปิดแอปแปล! แปลแคชสําหรับ app นี้จะถูกลบออกในครั้งต่อไป app เริ่มต้น!"</string>
 	<string name="wut_why_null">"ไม่สามารถโหลดหน้าการตั้งค่าสําหรับแต่ละแอป ปิดและเปิดโปรแกรมประยุกต์อีกครั้ง"</string>
