@@ -86,10 +86,13 @@ Download the latest APK from the [GitHub releases](https://github.com/rushiranpi
 
 ## Screenshots
 
-| Translation in an app | App list |
+| Apps to Translate | Global Settings |
 | --- | --- |
-| ![](screenshots/Joint1S.png) | ![](screenshots/Screen1S.png) |
-| ![](screenshots/Joint2S.png) | ![](screenshots/Screen2S.png) |
+| ![](screenshots/AllTransNext-apps.png) | ![](screenshots/AllTransNext-settings.png) |
+
+| Per-app settings |
+| --- |
+| ![](screenshots/AllTransNext-app.png) |
 
 ## Building
 
