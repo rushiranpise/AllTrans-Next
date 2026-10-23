@@ -51,7 +51,15 @@ class MaterialPreferenceDialogs {
         new MaterialAlertDialogBuilder(preference.getContext())
                 .setTitle(preference.getTitle())
                 .setSingleChoiceItems(entries, checked, (dialog, which) -> {
-                    preference.setValue(values[which].toString());
+                    String value = values[which].toString();
+                    /* setValue() alone bypasses the change listener; the stock
+                       dialog invokes it, so the theme switch and the language
+                       model download keep working. */
+                    androidx.preference.Preference.OnPreferenceChangeListener listener =
+                            preference.getOnPreferenceChangeListener();
+                    if (listener == null || listener.onPreferenceChange(preference, value)) {
+                        preference.setValue(value);
+                    }
                     dialog.dismiss();
                 })
                 .setNegativeButton(android.R.string.cancel, null)

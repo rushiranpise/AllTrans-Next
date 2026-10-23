@@ -249,15 +249,19 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         addPreferencesFromResource(R.xml.preferences);
 
         /* Recreate the activity when the appearance changes so the new theme
-           (and AMOLED surfaces) apply immediately. */
+           (and AMOLED surfaces) apply immediately. The value is committed
+           synchronously first: recreate() before the write lands makes the new
+           activity read the previous theme and stay in it. */
         Preference themePreference = findPreference(ThemeManager.KEY);
         if (themePreference != null) {
             themePreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(() -> {
+                preference.getPreferenceManager().getSharedPreferences().edit()
+                        .putString(ThemeManager.KEY, (String) newValue).commit();
+                new android.os.Handler(android.os.Looper.getMainLooper()).post(() -> {
                     if (getActivity() != null) {
                         getActivity().recreate();
                     }
-                }, 100);
+                });
                 return true;
             });
         }
