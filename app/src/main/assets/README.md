@@ -1,4 +1,4 @@
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY6TVJXST724J)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/rushiranpise)
 
 ## Table of Contents
 
@@ -129,6 +129,6 @@ Once you have the above, contact me on the  [XDA support thread](https://forum.x
 You can also report issues on the  [Project's Github](https://github.com/akhilkedia/AllTrans).
 
 ## Donations
-If you like this project, buy me a cup of coffee! :) 
+If you like this project, buy me a coffee! :) 
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY6TVJXST724J)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/rushiranpise)

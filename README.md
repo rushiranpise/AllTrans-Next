@@ -16,6 +16,7 @@ replaces text, hints, notifications, web views and drawn text directly in the ta
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-green.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![GitHub downloads](https://img.shields.io/github/downloads/rushiranpise/AllTrans-Next/total?style=social)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/rushiranpise)
 
 Download the latest APK from the [GitHub releases](https://github.com/rushiranpise/AllTrans-Next/releases).
 
@@ -111,9 +112,11 @@ secrets and publishes a release.
 - **AllTrans Next** maintained by [@rushiranpise](https://github.com/rushiranpise), with a
   Material 3 redesign, updated ML Kit and a working CI pipeline.
 
-If you want to support the original author, the original
-[PayPal donation link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UY6TVJXST724J)
-is still active.
+## Support
+
+If you like this project, you can buy me a coffee:
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-yellow?logo=buymeacoffee)](https://buymeacoffee.com/rushiranpise)
 
 ## License
 
